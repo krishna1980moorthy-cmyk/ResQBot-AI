@@ -1,0 +1,16 @@
+﻿.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.bak
+*.log
+*.cache
+.env
+.env.*
+datasets/
+runs/
+logs/
+**/logs/
+*.pt
+!controllers/resqbot_ai1/resqbot_victim_best.pt

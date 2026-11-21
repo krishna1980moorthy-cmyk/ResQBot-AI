@@ -1,0 +1,6753 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Asphalt.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/RoughConcrete.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Roughcast.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/RedBricks.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/CorrodedMetal.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/CorrugatedMetal.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/SandyGround.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/StonePavement.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/OldPlywood.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/BrushedAluminium.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/MetalPipePaint.proto"
+EXTERNPROTO "../protos/ResQBotRover.proto"
+EXTERNPROTO "../protos/ResQBotRover_V2.proto"
+
+WorldInfo {
+  info [
+    "ResQBot AI — Post-Earthquake Multi-Hazard Urban Disaster Environment"
+    "Webots R2025a static physical disaster world (no robot or controllers)."
+    "Zones A-F: Rescue Entry, Residential Collapse, Severe Collapse, Gas Leak, Fire/Smoke, Static Victims."
+  ]
+  title "ResQBot AI - Custom 4WD Rescue Rover Disaster Demo"
+  basicTimeStep 16
+  defaultDamping Damping {
+    linear 0.3
+    angular 0.3
+  }
+}
+Viewpoint {
+  orientation -0.2726007599734848 0.35459573926468885 0.8943996239697374 1.3591043566608292
+  position -16.15922678383985 -37.78388244666553 28.656551781594427
+}
+TexturedBackground {
+  texture "noon_cloudy_empty"
+}
+TexturedBackgroundLight {
+  texture "noon_cloudy_empty"
+}
+DEF Disaster_Site_Ground Group {
+  children [
+    DEF Disaster_Ground Solid {
+      translation 0 2 -0.1
+      children [
+        Shape {
+          appearance SandyGround {
+            colorOverride 0.62 0.57 0.5
+            textureTransform TextureTransform {
+              scale 18 18
+            }
+          }
+          geometry DEF GEOM_DISASTER_GROUND_BASE Box {
+            size 64 60 0.2
+          }
+          castShadows FALSE
+        }
+      ]
+      name "disaster_ground_base"
+      boundingObject USE GEOM_DISASTER_GROUND_BASE
+    }
+    Solid {
+      translation -9 2.8 0.002
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.64 0.62 0.58
+            textureTransform TextureTransform {
+              scale 4.6 4.88
+            }
+          }
+          geometry DEF GEOM_APRON_ZONE_B Box {
+            size 11.5 12.2 0.004
+          }
+          castShadows FALSE
+        }
+      ]
+      name "apron_zone_b"
+    }
+    Solid {
+      translation 10 2.5 0.002
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.58 0.55 0.51
+            textureTransform TextureTransform {
+              scale 5.52 5.04
+            }
+          }
+          geometry DEF GEOM_APRON_ZONE_C Box {
+            size 13.8 12.6 0.004
+          }
+          castShadows FALSE
+        }
+      ]
+      name "apron_zone_c"
+    }
+    Solid {
+      translation 10.2 13.8 0.002
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.55 0.55 0.53
+            textureTransform TextureTransform {
+              scale 5.12 3.44
+            }
+          }
+          geometry DEF GEOM_APRON_ZONE_D Box {
+            size 12.8 8.6 0.004
+          }
+          castShadows FALSE
+        }
+      ]
+      name "apron_zone_d"
+    }
+    Solid {
+      translation -9 13.6 0.002
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.34 0.32 0.31
+            textureTransform TextureTransform {
+              scale 4.48 3.28
+            }
+          }
+          geometry DEF GEOM_APRON_ZONE_E Box {
+            size 11.2 8.2 0.004
+          }
+          castShadows FALSE
+        }
+      ]
+      name "apron_zone_e"
+    }
+  ]
+}
+DEF Broken_Road Group {
+  children [
+    Solid {
+      translation -16 -8.5 0.003
+      children [
+        Shape {
+          appearance Asphalt {
+            colorOverride 0.76 0.76 0.78
+            textureTransform TextureTransform {
+              scale 2.8 2.07
+            }
+          }
+          geometry DEF GEOM_ROAD_SEG_ENTRY_WEST Box {
+            size 8.4 6.2 0.006
+          }
+          castShadows FALSE
+        }
+      ]
+      name "road_seg_entry_west"
+    }
+    Solid {
+      translation -8 -8.5 0.003
+      children [
+        Shape {
+          appearance Asphalt {
+            colorOverride 0.72 0.72 0.74
+            textureTransform TextureTransform {
+              scale 2.4 2.07
+            }
+          }
+          geometry DEF GEOM_ROAD_SEG_ENTRY_MID Box {
+            size 7.2 6.2 0.006
+          }
+          castShadows FALSE
+        }
+      ]
+      name "road_seg_entry_mid"
+    }
+    Solid {
+      translation -1.8 -8.5 0.003
+      children [
+        Shape {
+          appearance Asphalt {
+            colorOverride 0.68 0.67 0.69
+            textureTransform TextureTransform {
+              scale 1.63 2.07
+            }
+          }
+          geometry DEF GEOM_ROAD_SEG_CENTER_W Box {
+            size 4.9 6.2 0.006
+          }
+          castShadows FALSE
+        }
+      ]
+      name "road_seg_center_w"
+    }
+    Solid {
+      translation 3.6 -8.6 0.003
+      children [
+        Shape {
+          appearance Asphalt {
+            colorOverride 0.65 0.64 0.66
+            textureTransform TextureTransform {
+              scale 1.8 2
+            }
+          }
+          geometry DEF GEOM_ROAD_SEG_CENTER_E Box {
+            size 5.4 6 0.006
+          }
+          castShadows FALSE
+        }
+      ]
+      name "road_seg_center_e"
+    }
+    Solid {
+      translation 9.5 -8.4 0.003
+      children [
+        Shape {
+          appearance Asphalt {
+            colorOverride 0.7 0.69 0.7
+            textureTransform TextureTransform {
+              scale 1.93 2.03
+            }
+          }
+          geometry DEF GEOM_ROAD_SEG_EAST_1 Box {
+            size 5.8 6.1 0.006
+          }
+          castShadows FALSE
+        }
+      ]
+      name "road_seg_east_1"
+    }
+    Solid {
+      translation 16 -8.5 0.003
+      children [
+        Shape {
+          appearance Asphalt {
+            colorOverride 0.74 0.74 0.76
+            textureTransform TextureTransform {
+              scale 2.27 2.07
+            }
+          }
+          geometry DEF GEOM_ROAD_SEG_EAST_2 Box {
+            size 6.8 6.2 0.006
+          }
+          castShadows FALSE
+        }
+      ]
+      name "road_seg_east_2"
+    }
+    Pose {
+      translation -4.35 -8.5 0.008
+      rotation 0 0 1 0.08
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.08 0.07 0.07
+            roughness 0.98
+            metalness 0
+          }
+          geometry Box {
+            size 0.18 5.8 0.006
+          }
+          castShadows FALSE
+        }
+      ]
+    }
+    Pose {
+      translation 0.75 -8.5 0.008
+      rotation 0 0 1 -0.12
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.08 0.07 0.07
+            roughness 0.98
+            metalness 0
+          }
+          geometry Box {
+            size 0.22 5.9 0.006
+          }
+          castShadows FALSE
+        }
+      ]
+    }
+    Pose {
+      translation 6.45 -8.5 0.008
+      rotation 0 0 1 0.15
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.08 0.07 0.07
+            roughness 0.98
+            metalness 0
+          }
+          geometry Box {
+            size 0.2 5.7 0.006
+          }
+          castShadows FALSE
+        }
+      ]
+    }
+    Pose {
+      translation 12.5 -8.5 0.008
+      rotation 0 0 1 -0.07
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.08 0.07 0.07
+            roughness 0.98
+            metalness 0
+          }
+          geometry Box {
+            size 0.16 5.6 0.006
+          }
+          castShadows FALSE
+        }
+      ]
+    }
+    Pose {
+      translation 0 1.8 0.008
+      rotation 0 0 1 0.09
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.08 0.07 0.07
+            roughness 0.98
+            metalness 0
+          }
+          geometry Box {
+            size 4.4 0.18 0.006
+          }
+          castShadows FALSE
+        }
+      ]
+    }
+    Pose {
+      translation 0.1 7.6 0.008
+      rotation 0 0 1 -0.11
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.08 0.07 0.07
+            roughness 0.98
+            metalness 0
+          }
+          geometry Box {
+            size 4.2 0.2 0.006
+          }
+          castShadows FALSE
+        }
+      ]
+    }
+    Pose {
+      translation -18.5 -8.5 0.009
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.76 0.64 0.22
+            roughness 0.9
+            metalness 0
+          }
+          geometry Box {
+            size 1.8 0.14 0.004
+          }
+          castShadows FALSE
+        }
+      ]
+    }
+    Pose {
+      translation -14.5 -8.5 0.009
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.76 0.64 0.22
+            roughness 0.9
+            metalness 0
+          }
+          geometry Box {
+            size 1.8 0.14 0.004
+          }
+          castShadows FALSE
+        }
+      ]
+    }
+    Pose {
+      translation -10.5 -8.5 0.009
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.76 0.64 0.22
+            roughness 0.9
+            metalness 0
+          }
+          geometry Box {
+            size 1.8 0.14 0.004
+          }
+          castShadows FALSE
+        }
+      ]
+    }
+    Pose {
+      translation -6.5 -8.5 0.009
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.76 0.64 0.22
+            roughness 0.9
+            metalness 0
+          }
+          geometry Box {
+            size 1.8 0.14 0.004
+          }
+          castShadows FALSE
+        }
+      ]
+    }
+    Pose {
+      translation -2.5 -8.5 0.009
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.76 0.64 0.22
+            roughness 0.9
+            metalness 0
+          }
+          geometry Box {
+            size 1.8 0.14 0.004
+          }
+          castShadows FALSE
+        }
+      ]
+    }
+    Pose {
+      translation 2.5 -8.5 0.009
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.76 0.64 0.22
+            roughness 0.9
+            metalness 0
+          }
+          geometry Box {
+            size 1.8 0.14 0.004
+          }
+          castShadows FALSE
+        }
+      ]
+    }
+    Pose {
+      translation 7 -8.5 0.009
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.76 0.64 0.22
+            roughness 0.9
+            metalness 0
+          }
+          geometry Box {
+            size 1.8 0.14 0.004
+          }
+          castShadows FALSE
+        }
+      ]
+    }
+    Pose {
+      translation 11.5 -8.5 0.009
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.76 0.64 0.22
+            roughness 0.9
+            metalness 0
+          }
+          geometry Box {
+            size 1.8 0.14 0.004
+          }
+          castShadows FALSE
+        }
+      ]
+    }
+    Pose {
+      translation 16 -8.5 0.009
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.76 0.64 0.22
+            roughness 0.9
+            metalness 0
+          }
+          geometry Box {
+            size 1.8 0.14 0.004
+          }
+          castShadows FALSE
+        }
+      ]
+    }
+    Solid {
+      translation -16.8 -4.85 0.0025
+      children [
+        Shape {
+          appearance StonePavement {
+            colorOverride 0.72 0.7 0.67
+            textureTransform TextureTransform {
+              scale 3 1
+            }
+          }
+          geometry DEF GEOM_CURB_NW_1 Box {
+            size 6.2 1.1 0.005
+          }
+          castShadows FALSE
+        }
+      ]
+      name "curb_nw_1"
+    }
+    Solid {
+      translation -8.2 -4.85 0.0025
+      children [
+        Shape {
+          appearance StonePavement {
+            colorOverride 0.72 0.7 0.67
+            textureTransform TextureTransform {
+              scale 3 1
+            }
+          }
+          geometry DEF GEOM_CURB_NW_2 Box {
+            size 4.4 1.1 0.005
+          }
+          castShadows FALSE
+        }
+      ]
+      name "curb_nw_2"
+    }
+    Solid {
+      translation 6.2 -4.85 0.0025
+      children [
+        Shape {
+          appearance StonePavement {
+            colorOverride 0.72 0.7 0.67
+            textureTransform TextureTransform {
+              scale 3 1
+            }
+          }
+          geometry DEF GEOM_CURB_NE_1 Box {
+            size 6.2 1.1 0.005
+          }
+          castShadows FALSE
+        }
+      ]
+      name "curb_ne_1"
+    }
+    Solid {
+      translation 14.5 -4.85 0.0025
+      children [
+        Shape {
+          appearance StonePavement {
+            colorOverride 0.72 0.7 0.67
+            textureTransform TextureTransform {
+              scale 3 1
+            }
+          }
+          geometry DEF GEOM_CURB_NE_2 Box {
+            size 7.6 1.1 0.005
+          }
+          castShadows FALSE
+        }
+      ]
+      name "curb_ne_2"
+    }
+    Solid {
+      translation -14.5 -12.15 0.0025
+      children [
+        Shape {
+          appearance StonePavement {
+            colorOverride 0.72 0.7 0.67
+            textureTransform TextureTransform {
+              scale 3 1
+            }
+          }
+          geometry DEF GEOM_CURB_SW_1 Box {
+            size 10.5 1.1 0.005
+          }
+          castShadows FALSE
+        }
+      ]
+      name "curb_sw_1"
+    }
+    Solid {
+      translation -2.5 -12.2 0.0025
+      children [
+        Shape {
+          appearance StonePavement {
+            colorOverride 0.72 0.7 0.67
+            textureTransform TextureTransform {
+              scale 3 1
+            }
+          }
+          geometry DEF GEOM_CURB_S_MID Box {
+            size 9.8 1.1 0.005
+          }
+          castShadows FALSE
+        }
+      ]
+      name "curb_s_mid"
+    }
+    Solid {
+      translation 10.8 -12.15 0.0025
+      children [
+        Shape {
+          appearance StonePavement {
+            colorOverride 0.72 0.7 0.67
+            textureTransform TextureTransform {
+              scale 3 1
+            }
+          }
+          geometry DEF GEOM_CURB_SE_1 Box {
+            size 12.2 1.1 0.005
+          }
+          castShadows FALSE
+        }
+      ]
+      name "curb_se_1"
+    }
+    Solid {
+      translation 4.2 -10.8 0.3595
+      rotation 0.6358203211847164 -0.2998301514592393 0.7112203592730553 0.37117
+      children [
+        Shape {
+          appearance Asphalt {
+            colorOverride 0.58 0.56 0.55
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_ROAD_HEAVED_SLAB_SOUTH Box {
+            size 1.9 1.2 0.16
+          }
+        }
+      ]
+      name "road_heaved_slab_south"
+      boundingObject USE GEOM_ROAD_HEAVED_SLAB_SOUTH
+    }
+    Solid {
+      translation 12.8 -6.2 0.3859
+      rotation -0.7256478983090356 0.4470987050698957 -0.5230084852127178 0.31457
+      children [
+        Shape {
+          appearance Asphalt {
+            colorOverride 0.56 0.55 0.54
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_ROAD_HEAVED_SLAB_EAST Box {
+            size 2.1 1.3 0.18
+          }
+        }
+      ]
+      name "road_heaved_slab_east"
+      boundingObject USE GEOM_ROAD_HEAVED_SLAB_EAST
+    }
+  ]
+}
+DEF Search_Corridor Group {
+  children [
+    Solid {
+      translation 0 -2 0.003
+      children [
+        Shape {
+          appearance Asphalt {
+            colorOverride 0.66 0.65 0.66
+            textureTransform TextureTransform {
+              scale 2 3
+            }
+          }
+          geometry DEF GEOM_CORRIDOR_SEG_1 Box {
+            size 4.8 6.2 0.006
+          }
+          castShadows FALSE
+        }
+      ]
+      name "corridor_seg_1"
+    }
+    Solid {
+      translation 0 4.5 0.003
+      children [
+        Shape {
+          appearance Asphalt {
+            colorOverride 0.66 0.65 0.66
+            textureTransform TextureTransform {
+              scale 2 3
+            }
+          }
+          geometry DEF GEOM_CORRIDOR_SEG_2 Box {
+            size 4.8 6.4 0.006
+          }
+          castShadows FALSE
+        }
+      ]
+      name "corridor_seg_2"
+    }
+    Solid {
+      translation 0 11.2 0.003
+      children [
+        Shape {
+          appearance Asphalt {
+            colorOverride 0.66 0.65 0.66
+            textureTransform TextureTransform {
+              scale 2 3
+            }
+          }
+          geometry DEF GEOM_CORRIDOR_SEG_3 Box {
+            size 5 6.6 0.006
+          }
+          castShadows FALSE
+        }
+      ]
+      name "corridor_seg_3"
+    }
+  ]
+}
+DEF Rescue_Entry Group {
+  children [
+    Pose {
+      translation -15.85 -10.7 0.009
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.86 0.62 0.1
+            roughness 0.85
+            metalness 0
+          }
+          geometry Box {
+            size 0.7 0.1 0.004
+          }
+          castShadows FALSE
+        }
+      ]
+    }
+    Pose {
+      translation -16.2 -10.35 0.009
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.86 0.62 0.1
+            roughness 0.85
+            metalness 0
+          }
+          geometry Box {
+            size 0.1 0.7 0.004
+          }
+          castShadows FALSE
+        }
+      ]
+    }
+    Pose {
+      translation -12.15 -10.7 0.009
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.86 0.62 0.1
+            roughness 0.85
+            metalness 0
+          }
+          geometry Box {
+            size 0.7 0.1 0.004
+          }
+          castShadows FALSE
+        }
+      ]
+    }
+    Pose {
+      translation -11.8 -10.35 0.009
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.86 0.62 0.1
+            roughness 0.85
+            metalness 0
+          }
+          geometry Box {
+            size 0.1 0.7 0.004
+          }
+          castShadows FALSE
+        }
+      ]
+    }
+    Pose {
+      translation -15.85 -6.3 0.009
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.86 0.62 0.1
+            roughness 0.85
+            metalness 0
+          }
+          geometry Box {
+            size 0.7 0.1 0.004
+          }
+          castShadows FALSE
+        }
+      ]
+    }
+    Pose {
+      translation -16.2 -6.65 0.009
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.86 0.62 0.1
+            roughness 0.85
+            metalness 0
+          }
+          geometry Box {
+            size 0.1 0.7 0.004
+          }
+          castShadows FALSE
+        }
+      ]
+    }
+    Pose {
+      translation -12.15 -6.3 0.009
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.86 0.62 0.1
+            roughness 0.85
+            metalness 0
+          }
+          geometry Box {
+            size 0.7 0.1 0.004
+          }
+          castShadows FALSE
+        }
+      ]
+    }
+    Pose {
+      translation -11.8 -6.65 0.009
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.86 0.62 0.1
+            roughness 0.85
+            metalness 0
+          }
+          geometry Box {
+            size 0.1 0.7 0.004
+          }
+          castShadows FALSE
+        }
+      ]
+    }
+    Solid {
+      translation -19.2 -9.8 0.431
+      rotation 0 0 1 0.08
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.76 0.74 0.7
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_ENTRY_BARRIER_WEST_1 Box {
+            size 0.6 2.4 0.85
+          }
+        }
+      ]
+      name "entry_barrier_west_1"
+      boundingObject USE GEOM_ENTRY_BARRIER_WEST_1
+    }
+    Solid {
+      translation -19 -6.9 0.431
+      rotation 0 0 1 -0.14
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.76 0.74 0.7
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_ENTRY_BARRIER_WEST_2 Box {
+            size 0.6 2.4 0.85
+          }
+        }
+      ]
+      name "entry_barrier_west_2"
+      boundingObject USE GEOM_ENTRY_BARRIER_WEST_2
+    }
+    Solid {
+      translation -11 -12 0.4833
+      rotation 0.9176983734269596 0.38854931131638354 -0.08281985320608129 0.45642
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.82 0.52 0.18
+          }
+          geometry DEF GEOM_ENTRY_TILTED_BOLLARD Cylinder {
+            height 0.85
+            radius 0.14
+            subdivision 14
+          }
+        }
+      ]
+      name "entry_tilted_bollard"
+      boundingObject USE GEOM_ENTRY_TILTED_BOLLARD
+    }
+    Solid {
+      translation -16.2 -13.5 0.134
+      rotation -0.039959983294732486 0.9983695826316833 0.040759982960292686 1.55243
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.47 0.49
+          }
+          geometry DEF GEOM_ENTRY_FALLEN_LAMP_POLE Cylinder {
+            height 4.4
+            radius 0.09
+            subdivision 14
+          }
+        }
+      ]
+      name "entry_fallen_lamp_pole"
+      boundingObject USE GEOM_ENTRY_FALLEN_LAMP_POLE
+    }
+    Solid {
+      translation -17.5983 -3.6204 0.071
+      rotation 0.23185058487861568 0.10929027570146174 0.9665924383774902 0.96336
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.76 0.75 0.72
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_ENTRY_EDGE_DEBRIS_CHUNK_1 Box {
+            size 0.2058 0.2143 0.0927
+          }
+        }
+      ]
+      name "entry_edge_debris_chunk_1"
+      boundingObject USE GEOM_ENTRY_EDGE_DEBRIS_CHUNK_1
+    }
+    Solid {
+      translation -16.9949 -5.1994 0.0926
+      rotation 0.011400043405747901 0.14079053606098657 0.9899737693323025 2.99246
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_ENTRY_EDGE_DEBRIS_CHUNK_2 Box {
+            size 0.1598 0.2721 0.1136
+          }
+        }
+      ]
+      name "entry_edge_debris_chunk_2"
+      boundingObject USE GEOM_ENTRY_EDGE_DEBRIS_CHUNK_2
+    }
+    Solid {
+      translation -17.5489 -4.5429 0.1409
+      rotation -0.008919966191162218 0.14045946762451175 0.990046247484322 2.48567
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.56 0.53 0.49
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_ENTRY_EDGE_DEBRIS_CHUNK_3 Box {
+            size 0.3057 0.523 0.1277
+          }
+        }
+      ]
+      name "entry_edge_debris_chunk_3"
+      boundingObject USE GEOM_ENTRY_EDGE_DEBRIS_CHUNK_3
+    }
+    Solid {
+      translation -16.6077 -3.5928 0.0942
+      rotation -0.05600022155691484 -0.2712310730871788 0.9608838016001487 1.39455
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.56 0.53 0.49
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_ENTRY_EDGE_DEBRIS_CHUNK_4 Box {
+            size 0.1262 0.3105 0.0815
+          }
+        }
+      ]
+      name "entry_edge_debris_chunk_4"
+      boundingObject USE GEOM_ENTRY_EDGE_DEBRIS_CHUNK_4
+    }
+    Solid {
+      translation -17.559 -4.7469 0.1171
+      rotation 0.07931977437918865 -0.12922963241329488 0.988437188443838 2.15972
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_ENTRY_EDGE_DEBRIS_CHUNK_5 Box {
+            size 0.1897 0.1948 0.171
+          }
+        }
+      ]
+      name "entry_edge_debris_chunk_5"
+      boundingObject USE GEOM_ENTRY_EDGE_DEBRIS_CHUNK_5
+    }
+    Solid {
+      translation -16.0957 -5.1693 0.0661
+      rotation -0.09922983836464794 -0.10367983111606065 0.9896483879630539 2.82545
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_ENTRY_EDGE_DEBRIS_CHUNK_6 Box {
+            size 0.2506 0.1074 0.0703
+          }
+        }
+      ]
+      name "entry_edge_debris_chunk_6"
+      boundingObject USE GEOM_ENTRY_EDGE_DEBRIS_CHUNK_6
+    }
+  ]
+}
+DEF Residential_Collapse Group {
+  children [
+    Solid {
+      translation -13.8 -1.2 1.804
+      children [
+        Shape {
+          appearance Roughcast {
+            colorOverride 0.78 0.73 0.65
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_RES_WALL_WEST_S Box {
+            size 0.35 3.6 3.6
+          }
+        }
+      ]
+      name "res_wall_west_s"
+      boundingObject USE GEOM_RES_WALL_WEST_S
+    }
+    Solid {
+      translation -13.8 2.4 1.104
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_RES_WALL_WEST_M Box {
+            size 0.35 3.6 2.2
+          }
+        }
+      ]
+      name "res_wall_west_m"
+      boundingObject USE GEOM_RES_WALL_WEST_M
+    }
+    Solid {
+      translation -13.8 6.2 1.954
+      children [
+        Shape {
+          appearance Roughcast {
+            colorOverride 0.78 0.73 0.65
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_RES_WALL_WEST_N Box {
+            size 0.35 4.2 3.9
+          }
+        }
+      ]
+      name "res_wall_west_n"
+      boundingObject USE GEOM_RES_WALL_WEST_N
+    }
+    Solid {
+      translation -13.2 -3 1.404
+      children [
+        Shape {
+          appearance Roughcast {
+            colorOverride 0.78 0.73 0.65
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_RES_WALL_SOUTH_SW_STUB Box {
+            size 1.4 0.35 2.8
+          }
+        }
+      ]
+      name "res_wall_south_sw_stub"
+      boundingObject USE GEOM_RES_WALL_SOUTH_SW_STUB
+    }
+    Solid {
+      translation -8.3 -3 1.704
+      children [
+        Shape {
+          appearance Roughcast {
+            colorOverride 0.78 0.73 0.65
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_RES_WALL_SOUTH_MID Box {
+            size 3.8 0.35 3.4
+          }
+        }
+      ]
+      name "res_wall_south_mid"
+      boundingObject USE GEOM_RES_WALL_SOUTH_MID
+    }
+    Solid {
+      translation -3.9 -3 1.904
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.68 0.66 0.62
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_RES_WALL_SOUTH_SE_PIER Box {
+            size 1.1 0.35 3.8
+          }
+        }
+      ]
+      name "res_wall_south_se_pier"
+      boundingObject USE GEOM_RES_WALL_SOUTH_SE_PIER
+    }
+    Solid {
+      translation -3.5 -1.2 1.754
+      children [
+        Shape {
+          appearance Roughcast {
+            colorOverride 0.78 0.73 0.65
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_RES_WALL_EAST_S Box {
+            size 0.35 3.6 3.5
+          }
+        }
+      ]
+      name "res_wall_east_s"
+      boundingObject USE GEOM_RES_WALL_EAST_S
+    }
+    Solid {
+      translation -3.5 5.8 1.354
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_RES_WALL_EAST_N Box {
+            size 0.35 4.8 2.7
+          }
+        }
+      ]
+      name "res_wall_east_n"
+      boundingObject USE GEOM_RES_WALL_EAST_N
+    }
+    Solid {
+      translation -11.2 8.2 1.904
+      children [
+        Shape {
+          appearance Roughcast {
+            colorOverride 0.78 0.73 0.65
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_RES_WALL_NORTH_W Box {
+            size 5.2 0.35 3.8
+          }
+        }
+      ]
+      name "res_wall_north_w"
+      boundingObject USE GEOM_RES_WALL_NORTH_W
+    }
+    Solid {
+      translation -5.8 8.2 0.954
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.68 0.66 0.62
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_RES_WALL_NORTH_E Box {
+            size 4.6 0.35 1.9
+          }
+        }
+      ]
+      name "res_wall_north_e"
+      boundingObject USE GEOM_RES_WALL_NORTH_E
+    }
+    Solid {
+      translation -9.4 2.6 1.254
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_RES_PART_NS_MID Box {
+            size 0.24 3.8 2.5
+          }
+        }
+      ]
+      name "res_part_ns_mid"
+      boundingObject USE GEOM_RES_PART_NS_MID
+    }
+    Solid {
+      translation -11.6 4.5 1.054
+      children [
+        Shape {
+          appearance Roughcast {
+            colorOverride 0.78 0.73 0.65
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_RES_PART_EW_W Box {
+            size 4.2 0.24 2.1
+          }
+        }
+      ]
+      name "res_part_ew_w"
+      boundingObject USE GEOM_RES_PART_EW_W
+    }
+    Solid {
+      translation -5.6 4.4 0.804
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_RES_PART_EW_E Box {
+            size 3.8 0.24 1.6
+          }
+        }
+      ]
+      name "res_part_ew_e"
+      boundingObject USE GEOM_RES_PART_EW_E
+    }
+    Solid {
+      translation -7.6 -0.4 1.704
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.68 0.66 0.62
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_RES_COL_CENTER Box {
+            size 0.42 0.42 3.4
+          }
+        }
+      ]
+      name "res_col_center"
+      boundingObject USE GEOM_RES_COL_CENTER
+    }
+    Solid {
+      translation -6.2 6.2 0.9613
+      rotation 0.8317583109917007 -0.5541388747390364 0.033289932399867404 0.1442
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.68 0.66 0.62
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_RES_COL_BROKEN_NE Box {
+            size 0.42 0.42 1.85
+          }
+        }
+      ]
+      name "res_col_broken_ne"
+      boundingObject USE GEOM_RES_COL_BROKEN_NE
+    }
+    Solid {
+      translation -11.6 6.4 1.0382
+      rotation 0.07572965866826521 0.9842955635438194 0.15945928127877418 0.42835
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.6 0.58 0.54
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_RES_COLLAPSED_ROOF_NW Box {
+            size 4.2 3.4 0.22
+          }
+        }
+      ]
+      name "res_collapsed_roof_nw"
+      boundingObject USE GEOM_RES_COLLAPSED_ROOF_NW
+    }
+    Solid {
+      translation -5.8 6.3 0.9276
+      rotation -0.8494598829444362 -0.38343994716197893 -0.36247995005026634 0.41141
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.64 0.62 0.58
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_RES_COLLAPSED_ROOF_NE Box {
+            size 3.6 3.1 0.2
+          }
+        }
+      ]
+      name "res_collapsed_roof_ne"
+      boundingObject USE GEOM_RES_COLLAPSED_ROOF_NE
+    }
+    Solid {
+      translation -5.2 -1.6 3.55
+      rotation 0.5545587789738248 0.831978168152486 -0.016639963362169004 0.07211
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.66 0.64 0.6
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_RES_OVERHANG_SLAB_SE Box {
+            size 3.6 3 0.22
+          }
+        }
+      ]
+      name "res_overhang_slab_se"
+      boundingObject USE GEOM_RES_OVERHANG_SLAB_SE
+    }
+    Solid {
+      translation -11.2 1.2 0.3305
+      rotation 0.029199879635424232 0.40128834585271883 0.9154862262820045 0.58839
+      children [
+        Shape {
+          appearance OldPlywood {
+            colorOverride 0.56 0.46 0.35
+            textureTransform TextureTransform {
+              scale 2 1
+            }
+          }
+          geometry DEF GEOM_RES_WOOD_BEAM_1 Box {
+            size 2.4 0.16 0.12
+          }
+        }
+      ]
+      name "res_wood_beam_1"
+      boundingObject USE GEOM_RES_WOOD_BEAM_1
+    }
+    Solid {
+      translation -7.4 5.2 0.2175
+      rotation -0.06466022949249375 0.2558809081741309 -0.9645434233635931 0.69529
+      children [
+        Shape {
+          appearance OldPlywood {
+            colorOverride 0.56 0.46 0.35
+            textureTransform TextureTransform {
+              scale 2 1
+            }
+          }
+          geometry DEF GEOM_RES_WOOD_BEAM_2 Box {
+            size 2.1 0.15 0.1
+          }
+        }
+      ]
+      name "res_wood_beam_2"
+      boundingObject USE GEOM_RES_WOOD_BEAM_2
+    }
+    Pose {
+      translation -13.7182 2.3793 2.3856
+      rotation -0.4472095954991038 0.8944291909891625 0 0.21999
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.544
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -13.8421 2.3599 2.4246
+      rotation -0.4472095954991038 0.8944291909891625 0 0.21999
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.488
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -13.8293 2.3973 2.3018
+      rotation -0.4472095954991038 0.8944291909891625 0 0.21999
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.433
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -13.726 2.2891 2.4545
+      rotation -0.4472095954991038 0.8944291909891625 0 0.21999
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.588
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -6.0378 6.287 1.9714
+      rotation 0.5547001962252291 0.8320502943378437 0 0.34605
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.508
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -6.1895 6.1346 2.1821
+      rotation 0.5547001962252291 0.8320502943378437 0 0.34605
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.723
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -6.0251 6.1385 2.0843
+      rotation 0.5547001962252291 0.8320502943378437 0 0.34605
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.759
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -6.1798 6.084 2.1155
+      rotation 0.5547001962252291 0.8320502943378437 0 0.34605
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.729
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -6.2108 6.1831 2.0767
+      rotation 0.5547001962252291 0.8320502943378437 0 0.34605
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.786
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -3.2836 5.8342 2.946
+      rotation 0 1 0 0.41822
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.539
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -3.5359 5.8038 2.807
+      rotation 0 1 0 0.41822
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.463
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -3.4712 5.8493 2.8483
+      rotation 0 1 0 0.41822
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.565
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation -3.5416 5.8652 2.7697
+      rotation 0 1 0 0.41822
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.375
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Solid {
+      translation -5.4671 -3.6638 0.201
+      rotation -0.35945840674008894 -0.41653815374037906 0.8350362987933119 0.26036
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.56 0.53 0.49
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_RES_SE_ENTRANCE_RUBBLE_CHUNK_1 Box {
+            size 0.4316 0.2413 0.3304
+          }
+        }
+      ]
+      name "res_se_entrance_rubble_chunk_1"
+      boundingObject USE GEOM_RES_SE_ENTRANCE_RUBBLE_CHUNK_1
+    }
+    Solid {
+      translation -6.5064 -2.863 0.0842
+      rotation 0.18551906372475177 -0.22953884156629756 0.9554551780209753 1.12871
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.65 0.63 0.59
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_RES_SE_ENTRANCE_RUBBLE_CHUNK_2 Box {
+            size 0.2348 0.2105 0.0832
+          }
+        }
+      ]
+      name "res_se_entrance_rubble_chunk_2"
+      boundingObject USE GEOM_RES_SE_ENTRANCE_RUBBLE_CHUNK_2
+    }
+    Solid {
+      translation -5.4256 -3.8679 0.0919
+      rotation 0.028150011234671726 0.3736801491357773 0.9271303700178044 0.45969
+      children [
+        Shape {
+          appearance OldPlywood {
+            colorOverride 0.55 0.45 0.34
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_RES_SE_ENTRANCE_RUBBLE_CHUNK_3 Box {
+            size 0.3465 0.1493 0.1137
+          }
+        }
+      ]
+      name "res_se_entrance_rubble_chunk_3"
+      boundingObject USE GEOM_RES_SE_ENTRANCE_RUBBLE_CHUNK_3
+    }
+    Solid {
+      translation -5.0732 -2.3599 0.1506
+      rotation 0.10900952092055974 0.10763952694146454 0.9881956570378602 1.79854
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.65 0.63 0.59
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_RES_SE_ENTRANCE_RUBBLE_CHUNK_4 Box {
+            size 0.3699 0.211 0.2401
+          }
+        }
+      ]
+      name "res_se_entrance_rubble_chunk_4"
+      boundingObject USE GEOM_RES_SE_ENTRANCE_RUBBLE_CHUNK_4
+    }
+    Solid {
+      translation -5.9933 -3.3259 0.2437
+      rotation 0.20879966164042246 0.07842987290449394 0.9748084203242348 2.4477
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.56 0.53 0.49
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_RES_SE_ENTRANCE_RUBBLE_CHUNK_5 Box {
+            size 0.2185 0.33 0.3542
+          }
+        }
+      ]
+      name "res_se_entrance_rubble_chunk_5"
+      boundingObject USE GEOM_RES_SE_ENTRANCE_RUBBLE_CHUNK_5
+    }
+    Solid {
+      translation -6.0706 -3.5633 0.0989
+      rotation 0.06952009520088354 -0.12338016895691903 0.9899213555992323 2.65539
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.56 0.53 0.49
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_RES_SE_ENTRANCE_RUBBLE_CHUNK_6 Box {
+            size 0.4213 0.1653 0.0812
+          }
+        }
+      ]
+      name "res_se_entrance_rubble_chunk_6"
+      boundingObject USE GEOM_RES_SE_ENTRANCE_RUBBLE_CHUNK_6
+    }
+    Solid {
+      translation -4.0887 -3.0809 0.0668
+      rotation 0.10659017544224365 0.014200023372547705 0.9942016364075301 2.57402
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.82 0.8 0.76
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_RES_SE_ENTRANCE_RUBBLE_CHUNK_7 Box {
+            size 0.334 0.1007 0.0557
+          }
+        }
+      ]
+      name "res_se_entrance_rubble_chunk_7"
+      boundingObject USE GEOM_RES_SE_ENTRANCE_RUBBLE_CHUNK_7
+    }
+    Solid {
+      translation -4.1748 -3.2311 0.1059
+      rotation -0.15627940147448038 0.04757981777678383 0.9865662216065915 3.10283
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.65 0.63 0.59
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_RES_SE_ENTRANCE_RUBBLE_CHUNK_8 Box {
+            size 0.1957 0.0993 0.1421
+          }
+        }
+      ]
+      name "res_se_entrance_rubble_chunk_8"
+      boundingObject USE GEOM_RES_SE_ENTRANCE_RUBBLE_CHUNK_8
+    }
+    Solid {
+      translation -6.1021 -3.7858 0.0711
+      rotation -0.519207681483275 0.3456184566442278 0.7816465095653049 0.29605
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.82 0.8 0.76
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_RES_SE_ENTRANCE_RUBBLE_CHUNK_9 Box {
+            size 0.1322 0.319 0.0753
+          }
+        }
+      ]
+      name "res_se_entrance_rubble_chunk_9"
+      boundingObject USE GEOM_RES_SE_ENTRANCE_RUBBLE_CHUNK_9
+    }
+    Solid {
+      translation -5.2876 -2.9897 0.1454
+      rotation 0.0328498892664949 0.16451944542233612 0.9858266768824558 2.02138
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_RES_SE_ENTRANCE_RUBBLE_CHUNK_10 Box {
+            size 0.3906 0.4287 0.1361
+          }
+        }
+      ]
+      name "res_se_entrance_rubble_chunk_10"
+      boundingObject USE GEOM_RES_SE_ENTRANCE_RUBBLE_CHUNK_10
+    }
+    Solid {
+      translation -4.3917 -3.4555 0.1646
+      rotation 0.07962978118562493 0.04984986301774962 0.9955772642569943 2.35924
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_RES_SE_ENTRANCE_RUBBLE_CHUNK_11 Box {
+            size 0.4146 0.2367 0.25
+          }
+        }
+      ]
+      name "res_se_entrance_rubble_chunk_11"
+      boundingObject USE GEOM_RES_SE_ENTRANCE_RUBBLE_CHUNK_11
+    }
+    Solid {
+      translation -11.3658 3.6996 0.1209
+      rotation 0.4015210479512266 -0.1051602744634165 0.9097923745157065 0.77358
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_RES_INTERIOR_RUBBLE_NW_CHUNK_1 Box {
+            size 0.1543 0.1635 0.1734
+          }
+        }
+      ]
+      name "res_interior_rubble_nw_chunk_1"
+      boundingObject USE GEOM_RES_INTERIOR_RUBBLE_NW_CHUNK_1
+    }
+    Solid {
+      translation -12.1287 4.2341 0.0669
+      rotation 0.0981203735253489 -0.0689402624422906 0.9927837793364847 2.98518
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.56 0.53 0.49
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_RES_INTERIOR_RUBBLE_NW_CHUNK_2 Box {
+            size 0.2041 0.1467 0.0683
+          }
+        }
+      ]
+      name "res_interior_rubble_nw_chunk_2"
+      boundingObject USE GEOM_RES_INTERIOR_RUBBLE_NW_CHUNK_2
+    }
+    Solid {
+      translation -12.109 3.2972 0.2051
+      rotation 0.13564941365667668 -0.02674988437387469 0.9903957190237567 2.80393
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.65 0.63 0.59
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_RES_INTERIOR_RUBBLE_NW_CHUNK_3 Box {
+            size 0.78 0.2536 0.1973
+          }
+        }
+      ]
+      name "res_interior_rubble_nw_chunk_3"
+      boundingObject USE GEOM_RES_INTERIOR_RUBBLE_NW_CHUNK_3
+    }
+    Solid {
+      translation -11.4994 2.6869 0.1414
+      rotation -0.16574942774280113 -0.135989530490157 0.9767466277392518 3.0293
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_RES_INTERIOR_RUBBLE_NW_CHUNK_4 Box {
+            size 0.2257 0.2512 0.1477
+          }
+        }
+      ]
+      name "res_interior_rubble_nw_chunk_4"
+      boundingObject USE GEOM_RES_INTERIOR_RUBBLE_NW_CHUNK_4
+    }
+    Solid {
+      translation -11.9375 4.0716 0.1096
+      rotation 0.11434013608771096 0.02676003184980886 0.9930811819659261 0.65296
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.56 0.53 0.49
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_RES_INTERIOR_RUBBLE_NW_CHUNK_5 Box {
+            size 0.2469 0.2777 0.1892
+          }
+        }
+      ]
+      name "res_interior_rubble_nw_chunk_5"
+      boundingObject USE GEOM_RES_INTERIOR_RUBBLE_NW_CHUNK_5
+    }
+    Solid {
+      translation -11.479 3.8391 0.0752
+      rotation 0.3452496848044441 0.008849991920403564 0.9384691432249868 0.77984
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.82 0.8 0.76
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_RES_INTERIOR_RUBBLE_NW_CHUNK_6 Box {
+            size 0.1394 0.2693 0.0665
+          }
+        }
+      ]
+      name "res_interior_rubble_nw_chunk_6"
+      boundingObject USE GEOM_RES_INTERIOR_RUBBLE_NW_CHUNK_6
+    }
+    Solid {
+      translation -11.8666 3.4444 0.1617
+      rotation -0.14414972166157117 -0.2760294670152167 0.9502781651096625 0.37282
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_RES_INTERIOR_RUBBLE_NW_CHUNK_7 Box {
+            size 0.498 0.4509 0.2398
+          }
+        }
+      ]
+      name "res_interior_rubble_nw_chunk_7"
+      boundingObject USE GEOM_RES_INTERIOR_RUBBLE_NW_CHUNK_7
+    }
+    Solid {
+      translation -12.6913 2.4583 0.1106
+      rotation -0.0703502312064148 -0.03279010776486626 0.9969832765909229 2.61504
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.76 0.75 0.72
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_RES_INTERIOR_RUBBLE_NW_CHUNK_8 Box {
+            size 0.2878 0.2894 0.1541
+          }
+        }
+      ]
+      name "res_interior_rubble_nw_chunk_8"
+      boundingObject USE GEOM_RES_INTERIOR_RUBBLE_NW_CHUNK_8
+    }
+    Solid {
+      translation -3.9991 6.626 0.0675
+      rotation -0.12367044956145185 0.0801202912498061 0.9890835954737671 1.13086
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_RES_INTERIOR_RUBBLE_NE_CHUNK_1 Box {
+            size 0.3304 0.1501 0.0708
+          }
+        }
+      ]
+      name "res_interior_rubble_ne_chunk_1"
+      boundingObject USE GEOM_RES_INTERIOR_RUBBLE_NE_CHUNK_1
+    }
+    Solid {
+      translation -5.7531 7.4619 0.0512
+      rotation -0.07995968987694423 -0.11322956083999994 0.9903461589498713 2.02225
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_RES_INTERIOR_RUBBLE_NE_CHUNK_2 Box {
+            size 0.3334 0.1078 0.0672
+          }
+        }
+      ]
+      name "res_interior_rubble_ne_chunk_2"
+      boundingObject USE GEOM_RES_INTERIOR_RUBBLE_NE_CHUNK_2
+    }
+    Solid {
+      translation -5.3862 7.1174 0.1702
+      rotation -0.03632988300888261 -0.022039929026032832 0.9990967826637659 2.55731
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.82 0.8 0.76
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_RES_INTERIOR_RUBBLE_NE_CHUNK_3 Box {
+            size 0.5629 0.4955 0.2727
+          }
+        }
+      ]
+      name "res_interior_rubble_ne_chunk_3"
+      boundingObject USE GEOM_RES_INTERIOR_RUBBLE_NE_CHUNK_3
+    }
+    Solid {
+      translation -3.6374 6.9065 0.1084
+      rotation 0.08880985718942397 -0.08039987071309185 0.9927984035318108 3.09326
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.82 0.8 0.76
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_RES_INTERIOR_RUBBLE_NE_CHUNK_4 Box {
+            size 0.1303 0.1227 0.1713
+          }
+        }
+      ]
+      name "res_interior_rubble_ne_chunk_4"
+      boundingObject USE GEOM_RES_INTERIOR_RUBBLE_NE_CHUNK_4
+    }
+    Solid {
+      translation -5.0567 6.3304 0.1425
+      rotation -0.023080014674277994 -0.21762013836292796 0.9757606203887996 1.59204
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.65 0.63 0.59
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_RES_INTERIOR_RUBBLE_NE_CHUNK_5 Box {
+            size 0.3831 0.1833 0.1667
+          }
+        }
+      ]
+      name "res_interior_rubble_ne_chunk_5"
+      boundingObject USE GEOM_RES_INTERIOR_RUBBLE_NE_CHUNK_5
+    }
+    Solid {
+      translation -4.5191 7.3814 0.1486
+      rotation -0.11290994452735789 0.05130997479141558 0.9922795124931953 0.91205
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.82 0.8 0.76
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_RES_INTERIOR_RUBBLE_NE_CHUNK_6 Box {
+            size 0.4277 0.4892 0.2206
+          }
+        }
+      ]
+      name "res_interior_rubble_ne_chunk_6"
+      boundingObject USE GEOM_RES_INTERIOR_RUBBLE_NE_CHUNK_6
+    }
+    Solid {
+      translation -4.7113 6.7226 0.2356
+      rotation -0.2359905537524841 -0.6136314398878632 0.7535017680939733 0.38646
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.65 0.63 0.59
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_RES_INTERIOR_RUBBLE_NE_CHUNK_7 Box {
+            size 0.4067 0.4453 0.3301
+          }
+        }
+      ]
+      name "res_interior_rubble_ne_chunk_7"
+      boundingObject USE GEOM_RES_INTERIOR_RUBBLE_NE_CHUNK_7
+    }
+    Solid {
+      translation -5.0233 7.501 0.1159
+      rotation -0.05936012731276958 -0.09680020761246791 0.9935321308803228 2.45845
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_RES_INTERIOR_RUBBLE_NE_CHUNK_8 Box {
+            size 0.5835 0.2593 0.1477
+          }
+        }
+      ]
+      name "res_interior_rubble_ne_chunk_8"
+      boundingObject USE GEOM_RES_INTERIOR_RUBBLE_NE_CHUNK_8
+    }
+  ]
+}
+DEF Severe_Collapse Group {
+  children [
+    Solid {
+      translation 5.5 -3.2 0.9144
+      rotation 0.831978168152486 0.016639963362169004 0.5545587789738248 0.07211
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.6 0.58 0.55
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_SEV_WALL_SOUTH_W Box {
+            size 3.4 0.4 1.8
+          }
+        }
+      ]
+      name "sev_wall_south_w"
+      boundingObject USE GEOM_SEV_WALL_SOUTH_W
+    }
+    Solid {
+      translation 13.2 -3.2 1.4622
+      rotation -0.8574528972953623 0.012860043453517241 -0.5144017381406897 0.05831
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.5 0.48 0.45
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_SEV_WALL_SOUTH_E Box {
+            size 4.8 0.4 2.9
+          }
+        }
+      ]
+      name "sev_wall_south_e"
+      boundingObject USE GEOM_SEV_WALL_SOUTH_E
+    }
+    Solid {
+      translation 16 2.5 1.6157
+      rotation 0 -1 0 0.08
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.6 0.58 0.55
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_SEV_WALL_EAST Box {
+            size 0.42 9.6 3.2
+          }
+        }
+      ]
+      name "sev_wall_east"
+      boundingObject USE GEOM_SEV_WALL_EAST
+    }
+    Solid {
+      translation 12.8 8 1.204
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_SEV_WALL_NORTH_E Box {
+            size 5.8 0.4 2.4
+          }
+        }
+      ]
+      name "sev_wall_north_e"
+      boundingObject USE GEOM_SEV_WALL_NORTH_E
+    }
+    Solid {
+      translation 4.8 -0.5 1.3496
+      rotation 0.5850910546568311 -0.6799812257012631 0.4419207965850498 0.25382
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.5 0.48 0.45
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_SEV_COL_1 Box {
+            size 0.5 0.5 2.6
+          }
+        }
+      ]
+      name "sev_col_1"
+      boundingObject USE GEOM_SEV_COL_1
+    }
+    Pose {
+      translation 4.7677 -0.6265 2.5966
+      rotation 0.6139413058238491 -0.7893516789133389 0 0.2242
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.565
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 4.6376 -0.6138 2.6852
+      rotation 0.6139413058238491 -0.7893516789133389 0 0.2242
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.689
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 4.7935 -0.6001 2.6415
+      rotation 0.6139413058238491 -0.7893516789133389 0 0.2242
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.615
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 4.6995 -0.55 2.6459
+      rotation 0.6139413058238491 -0.7893516789133389 0 0.2242
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.581
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 4.7941 -0.5797 2.667
+      rotation 0.6139413058238491 -0.7893516789133389 0 0.2242
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.644
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Solid {
+      translation 10.2 -1.8 1.5953
+      rotation -0.44073856464905375 0.6905677510316673 -0.5734681323893744 0.24396
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.5 0.48 0.45
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_SEV_COL_2 Box {
+            size 0.52 0.52 3.1
+          }
+        }
+      ]
+      name "sev_col_2"
+      boundingObject USE GEOM_SEV_COL_2
+    }
+    Pose {
+      translation 10.3347 -1.8194 3.1101
+      rotation -0.6 0.8 0 0.1974
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.774
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 10.1245 -1.8888 3.1545
+      rotation -0.6 0.8 0 0.1974
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.754
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 10.2838 -1.8746 3.1869
+      rotation -0.6 0.8 0 0.1974
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.898
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 10.242 -1.832 3.0838
+      rotation -0.6 0.8 0 0.1974
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.565
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 10.3381 -1.8511 3.0607
+      rotation -0.6 0.8 0 0.1974
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.654
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Solid {
+      translation 14.4 5.6 1.7845
+      rotation 0.5933798755979222 -0.7050698521821209 0.38829991859293056 0.13889
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.5 0.48 0.45
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_SEV_COL_3 Box {
+            size 0.5 0.5 3.5
+          }
+        }
+      ]
+      name "sev_col_3"
+      boundingObject USE GEOM_SEV_COL_3
+    }
+    Pose {
+      translation 14.3741 5.5059 3.5942
+      rotation 0.6246974865659541 -0.7808668582275596 0 0.12737
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.935
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 14.2341 5.5575 3.5294
+      rotation 0.6246974865659541 -0.7808668582275596 0 0.12737
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.836
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 14.4333 5.5635 3.4588
+      rotation 0.6246974865659541 -0.7808668582275596 0 0.12737
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.747
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 14.3986 5.4982 3.538
+      rotation 0.6246974865659541 -0.7808668582275596 0 0.12737
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.847
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 14.4991 5.5799 3.5999
+      rotation 0.6246974865659541 -0.7808668582275596 0 0.12737
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.791
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Solid {
+      translation 6.2 4.2 1.1523
+      rotation -0.6430622576669373 -0.5049217726824713 0.5757820214590693 0.31865
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.5 0.48 0.45
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_SEV_COL_4 Box {
+            size 0.48 0.48 2.2
+          }
+        }
+      ]
+      name "sev_col_4"
+      boundingObject USE GEOM_SEV_COL_4
+    }
+    Pose {
+      translation 6.0287 4.1736 2.3448
+      rotation -0.8436590171378174 -0.536879374535893 0 0.25509
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.905
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 6.2332 4.3321 2.2281
+      rotation -0.8436590171378174 -0.536879374535893 0 0.25509
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.684
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 6.0372 4.3583 2.3269
+      rotation -0.8436590171378174 -0.536879374535893 0 0.25509
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.62
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 6.1854 4.2588 2.2281
+      rotation -0.8436590171378174 -0.536879374535893 0 0.25509
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.567
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 6.1036 4.291 2.414
+      rotation -0.8436590171378174 -0.536879374535893 0 0.25509
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.919
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Solid {
+      translation 10.8 5.8 1.4457
+      rotation 0.7275420360292367 0.4903513722502354 -0.47983134280989176 0.22772
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.5 0.48 0.45
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_SEV_COL_5 Box {
+            size 0.5 0.5 2.8
+          }
+        }
+      ]
+      name "sev_col_5"
+      boundingObject USE GEOM_SEV_COL_5
+    }
+    Pose {
+      translation 10.8819 5.693 2.877
+      rotation 0.8 0.6 0 0.1974
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.846
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 10.9681 5.8302 2.9235
+      rotation 0.8 0.6 0 0.1974
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.877
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 10.8558 5.7327 2.8791
+      rotation 0.8 0.6 0 0.1974
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.911
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 10.8826 5.8165 2.9099
+      rotation 0.8 0.6 0 0.1974
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.709
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 10.8255 5.7206 2.8322
+      rotation 0.8 0.6 0 0.1974
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.45 0.25 0.16
+          }
+          geometry Cylinder {
+            height 0.743
+            radius 0.014
+            subdivision 6
+          }
+        }
+      ]
+    }
+    Solid {
+      translation 6.6 1.2 1.2813
+      rotation 0.15596961147238328 0.9655575947507494 0.2082594812158655 0.46078
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.6 0.58 0.55
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_SEV_PANCAKE_SLAB_WEST Box {
+            size 4.6 3.8 0.28
+          }
+        }
+      ]
+      name "sev_pancake_slab_west"
+      boundingObject USE GEOM_SEV_PANCAKE_SLAB_WEST
+    }
+    Solid {
+      translation 10.6 2.2 2.1818
+      rotation -0.6265100209880861 -0.575480019278581 -0.5256500176092759 0.49751
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.5 0.48 0.45
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_SEV_PANCAKE_SLAB_CORE Box {
+            size 5.2 4.4 0.3
+          }
+        }
+      ]
+      name "sev_pancake_slab_core"
+      boundingObject USE GEOM_SEV_PANCAKE_SLAB_CORE
+    }
+    Solid {
+      translation 12.2 -0.8 1.1472
+      rotation 0.8122871322659561 -0.3568187402715021 0.461378371129605 0.46268
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.6 0.58 0.55
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_SEV_PANCAKE_SLAB_SE Box {
+            size 4.4 3.4 0.26
+          }
+        }
+      ]
+      name "sev_pancake_slab_se"
+      boundingObject USE GEOM_SEV_PANCAKE_SLAB_SE
+    }
+    Solid {
+      translation 9.6 6.4 1.3252
+      rotation 0.28012922704049026 -0.9348374205066644 0.21818939795082484 0.48625
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.6 0.58 0.55
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_SEV_CAVITY_SLAB_NORTH Box {
+            size 4 3.2 0.26
+          }
+        }
+      ]
+      name "sev_cavity_slab_north"
+      boundingObject USE GEOM_SEV_CAVITY_SLAB_NORTH
+    }
+    Solid {
+      translation 14 3.2 1.8283
+      rotation 0.5939781520774455 0.4979284508972061 -0.6318680341984168 0.63885
+      children [
+        Shape {
+          appearance CorrugatedMetal {
+            colorOverride 0.48 0.46 0.44
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_SEV_CORRUGATED_SHEET Box {
+            size 3.4 2.2 0.06
+          }
+        }
+      ]
+      name "sev_corrugated_sheet"
+      boundingObject USE GEOM_SEV_CORRUGATED_SHEET
+    }
+    Solid {
+      translation 8.377 3.6264 0.1502
+      rotation -0.5692906548554169 -0.005030005786018983 0.8221209456862677 0.52004
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.82 0.8 0.76
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_CORE_RUBBLE_CHUNK_1 Box {
+            size 0.3405 0.1292 0.2461
+          }
+        }
+      ]
+      name "sev_core_rubble_chunk_1"
+      boundingObject USE GEOM_SEV_CORE_RUBBLE_CHUNK_1
+    }
+    Solid {
+      translation 9.684 -0.5389 0.0748
+      rotation -0.05130014666219894 -0.151710433725579 0.9870928220037027 1.79026
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.82 0.8 0.76
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_CORE_RUBBLE_CHUNK_2 Box {
+            size 0.4412 0.1573 0.0691
+          }
+        }
+      ]
+      name "sev_core_rubble_chunk_2"
+      boundingObject USE GEOM_SEV_CORE_RUBBLE_CHUNK_2
+    }
+    Solid {
+      translation 11.8777 0.4586 0.1697
+      rotation 0.028830142855153285 0.30989153553185744 0.9503347089676663 1.30237
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_CORE_RUBBLE_CHUNK_3 Box {
+            size 0.1902 0.289 0.2237
+          }
+        }
+      ]
+      name "sev_core_rubble_chunk_3"
+      boundingObject USE GEOM_SEV_CORE_RUBBLE_CHUNK_3
+    }
+    Solid {
+      translation 10.0081 2.0165 0.2357
+      rotation 0.918136572556665 -0.3409187273357203 0.20198924596545276 0.2648
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.82 0.8 0.76
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_CORE_RUBBLE_CHUNK_4 Box {
+            size 0.6559 0.6247 0.2607
+          }
+        }
+      ]
+      name "sev_core_rubble_chunk_4"
+      boundingObject USE GEOM_SEV_CORE_RUBBLE_CHUNK_4
+    }
+    Solid {
+      translation 12.5268 0.6281 0.1517
+      rotation -0.07929017587373416 -0.09471021007694996 0.9923422011166775 2.58932
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_CORE_RUBBLE_CHUNK_5 Box {
+            size 0.3394 0.1146 0.245
+          }
+        }
+      ]
+      name "sev_core_rubble_chunk_5"
+      boundingObject USE GEOM_SEV_CORE_RUBBLE_CHUNK_5
+    }
+    Solid {
+      translation 11.5486 1.778 0.1231
+      rotation -0.09980961220547656 0.05388979061970876 0.9935461397330051 2.99117
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.65 0.63 0.59
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_CORE_RUBBLE_CHUNK_6 Box {
+            size 0.5087 0.2861 0.1104
+          }
+        }
+      ]
+      name "sev_core_rubble_chunk_6"
+      boundingObject USE GEOM_SEV_CORE_RUBBLE_CHUNK_6
+    }
+    Solid {
+      translation 9.859 4.1867 0.1324
+      rotation -0.3076505210835113 -0.318860540070497 0.8964815184168576 0.22442
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.82 0.8 0.76
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_CORE_RUBBLE_CHUNK_7 Box {
+            size 0.2505 0.1323 0.2318
+          }
+        }
+      ]
+      name "sev_core_rubble_chunk_7"
+      boundingObject USE GEOM_SEV_CORE_RUBBLE_CHUNK_7
+    }
+    Solid {
+      translation 7.0835 2.2281 0.1294
+      rotation -0.13700989254318344 -0.027809978188642667 0.9901792234027398 2.33933
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.65 0.63 0.59
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_CORE_RUBBLE_CHUNK_8 Box {
+            size 0.2011 0.3188 0.1678
+          }
+        }
+      ]
+      name "sev_core_rubble_chunk_8"
+      boundingObject USE GEOM_SEV_CORE_RUBBLE_CHUNK_8
+    }
+    Solid {
+      translation 10.9516 3.8447 0.1038
+      rotation -0.09677955730712248 0.13754937081622956 0.9857554909182584 1.61563
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.56 0.53 0.49
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_CORE_RUBBLE_CHUNK_9 Box {
+            size 0.3908 0.2245 0.0998
+          }
+        }
+      ]
+      name "sev_core_rubble_chunk_9"
+      boundingObject USE GEOM_SEV_CORE_RUBBLE_CHUNK_9
+    }
+    Solid {
+      translation 10.471 -0.0079 0.1361
+      rotation 0.3832385719024466 -0.6478375859025179 0.6583575467010091 0.37053
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.76 0.75 0.72
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_CORE_RUBBLE_CHUNK_10 Box {
+            size 0.3703 0.3196 0.1413
+          }
+        }
+      ]
+      name "sev_core_rubble_chunk_10"
+      boundingObject USE GEOM_SEV_CORE_RUBBLE_CHUNK_10
+    }
+    Solid {
+      translation 12.2535 0.7939 0.2456
+      rotation 0.31951881532228465 -0.07112973627276573 0.9449064965766775 1.26562
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.76 0.75 0.72
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_CORE_RUBBLE_CHUNK_11 Box {
+            size 0.4592 0.3717 0.2803
+          }
+        }
+      ]
+      name "sev_core_rubble_chunk_11"
+      boundingObject USE GEOM_SEV_CORE_RUBBLE_CHUNK_11
+    }
+    Solid {
+      translation 12.5267 1.2613 0.1197
+      rotation -0.10809050810765024 -0.04752022338121509 0.9930046678776638 1.57341
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.82 0.8 0.76
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_CORE_RUBBLE_CHUNK_12 Box {
+            size 0.4641 0.2381 0.169
+          }
+        }
+      ]
+      name "sev_core_rubble_chunk_12"
+      boundingObject USE GEOM_SEV_CORE_RUBBLE_CHUNK_12
+    }
+    Solid {
+      translation 10.327 2.3703 0.1852
+      rotation 0.13881036166392793 -0.02209005755461543 0.9900725795879629 2.22546
+      children [
+        Shape {
+          appearance OldPlywood {
+            colorOverride 0.55 0.45 0.34
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_CORE_RUBBLE_CHUNK_13 Box {
+            size 1.0525 0.1164 0.1058
+          }
+        }
+      ]
+      name "sev_core_rubble_chunk_13"
+      boundingObject USE GEOM_SEV_CORE_RUBBLE_CHUNK_13
+    }
+    Solid {
+      translation 7.6594 0.35 0.1658
+      rotation -0.3257392633740627 0.22645948788509318 0.9179379241775255 0.92898
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_CORE_RUBBLE_CHUNK_14 Box {
+            size 0.2328 0.3116 0.2115
+          }
+        }
+      ]
+      name "sev_core_rubble_chunk_14"
+      boundingObject USE GEOM_SEV_CORE_RUBBLE_CHUNK_14
+    }
+    Solid {
+      translation 10.1212 -1.1363 0.0861
+      rotation 0.049829817658081865 0.3889585766864845 0.9199066337918139 0.6606
+      children [
+        Shape {
+          appearance OldPlywood {
+            colorOverride 0.55 0.45 0.34
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_CORE_RUBBLE_CHUNK_15 Box {
+            size 0.2936 0.1021 0.0891
+          }
+        }
+      ]
+      name "sev_core_rubble_chunk_15"
+      boundingObject USE GEOM_SEV_CORE_RUBBLE_CHUNK_15
+    }
+    Solid {
+      translation 12.7453 1.9116 0.1547
+      rotation -0.1365794974634926 0.15271943807749735 0.9787863986110114 1.73533
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.65 0.63 0.59
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_CORE_RUBBLE_CHUNK_16 Box {
+            size 0.4405 0.3062 0.1625
+          }
+        }
+      ]
+      name "sev_core_rubble_chunk_16"
+      boundingObject USE GEOM_SEV_CORE_RUBBLE_CHUNK_16
+    }
+    Solid {
+      translation 12.9291 2.096 0.1169
+      rotation -0.11105982543630358 -0.09545984995632577 0.9892184451476699 2.22402
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.65 0.63 0.59
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_CORE_RUBBLE_CHUNK_17 Box {
+            size 0.4274 0.2954 0.1159
+          }
+        }
+      ]
+      name "sev_core_rubble_chunk_17"
+      boundingObject USE GEOM_SEV_CORE_RUBBLE_CHUNK_17
+    }
+    Solid {
+      translation 11.7441 0.2593 0.1316
+      rotation 0.12686046953049573 0.003700013694331028 0.9919136712280783 2.77481
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.65 0.63 0.59
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_CORE_RUBBLE_CHUNK_18 Box {
+            size 0.3325 0.1994 0.1695
+          }
+        }
+      ]
+      name "sev_core_rubble_chunk_18"
+      boundingObject USE GEOM_SEV_CORE_RUBBLE_CHUNK_18
+    }
+    Solid {
+      translation 7.6406 2.7383 0.1007
+      rotation -0.05451978411843824 0.03536985994624286 0.9978860486784362 2.67642
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.82 0.8 0.76
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_CORE_RUBBLE_CHUNK_19 Box {
+            size 0.3886 0.3631 0.1328
+          }
+        }
+      ]
+      name "sev_core_rubble_chunk_19"
+      boundingObject USE GEOM_SEV_CORE_RUBBLE_CHUNK_19
+    }
+    Solid {
+      translation 12.5371 2.0072 0.0757
+      rotation 0.012859976796764799 -0.06672987959938685 0.9976881998728049 2.75802
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.56 0.53 0.49
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_CORE_RUBBLE_CHUNK_20 Box {
+            size 0.4215 0.3004 0.0861
+          }
+        }
+      ]
+      name "sev_core_rubble_chunk_20"
+      boundingObject USE GEOM_SEV_CORE_RUBBLE_CHUNK_20
+    }
+    Solid {
+      translation 10.8646 1.3859 0.2609
+      rotation 0.813990180298845 -0.1548800343059314 0.5598501240068162 0.21577
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_CORE_RUBBLE_CHUNK_21 Box {
+            size 0.5679 0.4018 0.4266
+          }
+        }
+      ]
+      name "sev_core_rubble_chunk_21"
+      boundingObject USE GEOM_SEV_CORE_RUBBLE_CHUNK_21
+    }
+    Solid {
+      translation 11.2344 1.1365 0.2102
+      rotation -0.05270012372686072 -0.045080105836942726 0.9975923421001706 2.63736
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_CORE_RUBBLE_CHUNK_22 Box {
+            size 0.6492 0.4203 0.3193
+          }
+        }
+      ]
+      name "sev_core_rubble_chunk_22"
+      boundingObject USE GEOM_SEV_CORE_RUBBLE_CHUNK_22
+    }
+    Solid {
+      translation 10.8946 1.105 0.2367
+      rotation -0.21245009315938626 0.05522002421398592 0.9756104278052663 1.5182
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.65 0.63 0.59
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_CORE_RUBBLE_CHUNK_23 Box {
+            size 0.6808 0.4217 0.2371
+          }
+        }
+      ]
+      name "sev_core_rubble_chunk_23"
+      boundingObject USE GEOM_SEV_CORE_RUBBLE_CHUNK_23
+    }
+    Solid {
+      translation 8.4748 0.7175 0.1853
+      rotation -0.01607992388988037 0.2904486252372981 0.9567554714478821 1.13567
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_CORE_RUBBLE_CHUNK_24 Box {
+            size 0.2253 0.1957 0.2867
+          }
+        }
+      ]
+      name "sev_core_rubble_chunk_24"
+      boundingObject USE GEOM_SEV_CORE_RUBBLE_CHUNK_24
+    }
+    Solid {
+      translation 7.7339 3.1068 0.1801
+      rotation 0.1321205130513724 0.05396020953869252 0.9897638434584194 3.01311
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_CORE_RUBBLE_CHUNK_25 Box {
+            size 0.4086 0.1662 0.2376
+          }
+        }
+      ]
+      name "sev_core_rubble_chunk_25"
+      boundingObject USE GEOM_SEV_CORE_RUBBLE_CHUNK_25
+    }
+    Solid {
+      translation 8.2756 4.3277 0.1149
+      rotation -0.22083045476766525 0.1513203116218046 0.9635019841898541 1.30238
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.82 0.8 0.76
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_CORE_RUBBLE_CHUNK_26 Box {
+            size 0.2746 0.1571 0.1291
+          }
+        }
+      ]
+      name "sev_core_rubble_chunk_26"
+      boundingObject USE GEOM_SEV_CORE_RUBBLE_CHUNK_26
+    }
+    Solid {
+      translation 7.573 -1.9787 0.2598
+      rotation 0.3256305583591971 -0.1212402078907627 0.9376916078611784 0.64563
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.82 0.8 0.76
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_SOUTH_RUBBLE_CHUNK_1 Box {
+            size 0.3433 0.6172 0.3676
+          }
+        }
+      ]
+      name "sev_south_rubble_chunk_1"
+      boundingObject USE GEOM_SEV_SOUTH_RUBBLE_CHUNK_1
+    }
+    Solid {
+      translation 9.9057 -2.1205 0.0804
+      rotation 0.11628017916463806 0.09312014347962759 0.9888415236081933 1.95481
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_SOUTH_RUBBLE_CHUNK_2 Box {
+            size 0.1609 0.2724 0.0798
+          }
+        }
+      ]
+      name "sev_south_rubble_chunk_2"
+      boundingObject USE GEOM_SEV_SOUTH_RUBBLE_CHUNK_2
+    }
+    Solid {
+      translation 5.8821 -2.6594 0.0984
+      rotation 0.06369002259403952 -0.21570007651961573 0.974380345661489 2.0276
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_SOUTH_RUBBLE_CHUNK_3 Box {
+            size 0.1564 0.2469 0.0904
+          }
+        }
+      ]
+      name "sev_south_rubble_chunk_3"
+      boundingObject USE GEOM_SEV_SOUTH_RUBBLE_CHUNK_3
+    }
+    Solid {
+      translation 6.8448 -1.6077 0.1838
+      rotation 0.12057958479094365 -0.13755952632146465 0.9831266146584875 1.74806
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_SOUTH_RUBBLE_CHUNK_4 Box {
+            size 0.3672 0.1593 0.2626
+          }
+        }
+      ]
+      name "sev_south_rubble_chunk_4"
+      boundingObject USE GEOM_SEV_SOUTH_RUBBLE_CHUNK_4
+    }
+    Solid {
+      translation 7.4565 -2.8547 0.1668
+      rotation 0.11807041304644843 -0.14424050459743984 0.9824734369928364 2.74689
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.65 0.63 0.59
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_SOUTH_RUBBLE_CHUNK_5 Box {
+            size 0.2308 0.4418 0.1724
+          }
+        }
+      ]
+      name "sev_south_rubble_chunk_5"
+      boundingObject USE GEOM_SEV_SOUTH_RUBBLE_CHUNK_5
+    }
+    Solid {
+      translation 8.9903 -2.4358 0.2454
+      rotation -0.07409989188092664 0.01798997375084845 0.9970885451491652 2.38936
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.56 0.53 0.49
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_SOUTH_RUBBLE_CHUNK_6 Box {
+            size 0.6142 0.3512 0.3939
+          }
+        }
+      ]
+      name "sev_south_rubble_chunk_6"
+      boundingObject USE GEOM_SEV_SOUTH_RUBBLE_CHUNK_6
+    }
+    Solid {
+      translation 6.7753 -1.888 0.1507
+      rotation 0.006539971235307774 0.05534975655570112 0.9984456085463373 2.50178
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.65 0.63 0.59
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_SOUTH_RUBBLE_CHUNK_7 Box {
+            size 0.4714 0.42 0.2413
+          }
+        }
+      ]
+      name "sev_south_rubble_chunk_7"
+      boundingObject USE GEOM_SEV_SOUTH_RUBBLE_CHUNK_7
+    }
+    Solid {
+      translation 7.1148 -1.5049 0.1823
+      rotation -0.0924803736492085 0.09071036649783415 0.9915740062645508 2.80754
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_SOUTH_RUBBLE_CHUNK_8 Box {
+            size 0.4867 0.1525 0.2412
+          }
+        }
+      ]
+      name "sev_south_rubble_chunk_8"
+      boundingObject USE GEOM_SEV_SOUTH_RUBBLE_CHUNK_8
+    }
+    Solid {
+      translation 7.9345 -2.203 0.1443
+      rotation 0.12244037638229549 -0.24710075958890246 0.9612229548039046 0.98803
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_SOUTH_RUBBLE_CHUNK_9 Box {
+            size 0.2653 0.4901 0.217
+          }
+        }
+      ]
+      name "sev_south_rubble_chunk_9"
+      boundingObject USE GEOM_SEV_SOUTH_RUBBLE_CHUNK_9
+    }
+    Solid {
+      translation 6.5909 -1.4821 0.1612
+      rotation -0.28696074951376044 -0.2951107708008288 0.9113523803643908 0.82635
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_SOUTH_RUBBLE_CHUNK_10 Box {
+            size 0.3913 0.2723 0.1918
+          }
+        }
+      ]
+      name "sev_south_rubble_chunk_10"
+      boundingObject USE GEOM_SEV_SOUTH_RUBBLE_CHUNK_10
+    }
+    Solid {
+      translation 9.5618 -3.0301 0.1006
+      rotation -0.05848014757483861 0.16799042392436966 0.9840524832595748 1.06874
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_SOUTH_RUBBLE_CHUNK_11 Box {
+            size 0.2769 0.2804 0.1367
+          }
+        }
+      ]
+      name "sev_south_rubble_chunk_11"
+      boundingObject USE GEOM_SEV_SOUTH_RUBBLE_CHUNK_11
+    }
+    Solid {
+      translation 7.1438 -2.8928 0.1038
+      rotation -0.07685039794007587 -0.5723729638121174 0.8163842273301124 0.50563
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_SOUTH_RUBBLE_CHUNK_12 Box {
+            size 0.2618 0.284 0.1063
+          }
+        }
+      ]
+      name "sev_south_rubble_chunk_12"
+      boundingObject USE GEOM_SEV_SOUTH_RUBBLE_CHUNK_12
+    }
+    Solid {
+      translation 7.1802 -2.3992 0.2101
+      rotation 0.10804985012415684 0.24430966111830413 0.9636586633099953 1.15873
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_SOUTH_RUBBLE_CHUNK_13 Box {
+            size 0.3851 0.4025 0.2647
+          }
+        }
+      ]
+      name "sev_south_rubble_chunk_13"
+      boundingObject USE GEOM_SEV_SOUTH_RUBBLE_CHUNK_13
+    }
+    Solid {
+      translation 8.4011 -1.7982 0.2395
+      rotation -0.1742697085951504 -0.10532982387288226 0.9790483628856487 2.92342
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.76 0.75 0.72
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_SEV_SOUTH_RUBBLE_CHUNK_14 Box {
+            size 0.511 0.5158 0.2023
+          }
+        }
+      ]
+      name "sev_south_rubble_chunk_14"
+      boundingObject USE GEOM_SEV_SOUTH_RUBBLE_CHUNK_14
+    }
+    Solid {
+      translation 3.75 -0.45 0.3072
+      rotation 0.3299307757176553 -0.2939206910524452 0.8970821091770806 0.4551
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.5 0.48 0.45
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_SEV_LOW_RUBBLE_V3_A Box {
+            size 0.9 0.6 0.4
+          }
+        }
+      ]
+      name "sev_low_rubble_v3_a"
+      boundingObject USE GEOM_SEV_LOW_RUBBLE_V3_A
+    }
+    Solid {
+      translation 4.15 2.1 0.2644
+      rotation -0.23011052660854273 0.4531510370373349 -0.8612219709087356 0.33935
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_SEV_LOW_RUBBLE_V3_B Box {
+            size 0.8 0.55 0.36
+          }
+        }
+      ]
+      name "sev_low_rubble_v3_b"
+      boundingObject USE GEOM_SEV_LOW_RUBBLE_V3_B
+    }
+  ]
+}
+DEF Gas_Hazard_Zone Group {
+  children [
+    DEF Damaged_Pipeline Group {
+      children [
+        Solid {
+          translation 6.2 13.5 0.394
+          children [
+            Shape {
+              appearance RoughConcrete {
+                colorOverride 0.64 0.62 0.59
+              }
+              geometry DEF GEOM_PIPE_PIER_WEST Box {
+                size 0.55 0.95 0.78
+              }
+            }
+          ]
+          name "pipe_pier_west"
+          boundingObject USE GEOM_PIPE_PIER_WEST
+        }
+        Solid {
+          translation 9.6 14.3 0.5691
+          rotation 0.9821034661438797 0.1691505969842554 0.08283029233346662 1.38667
+          children [
+            Shape {
+              appearance RoughConcrete {
+                colorOverride 0.64 0.62 0.59
+              }
+              geometry DEF GEOM_PIPE_PIER_TOPPLED Box {
+                size 0.55 0.95 0.78
+              }
+            }
+          ]
+          name "pipe_pier_toppled"
+          boundingObject USE GEOM_PIPE_PIER_TOPPLED
+        }
+        Solid {
+          translation 13.8 13.5 0.394
+          children [
+            Shape {
+              appearance RoughConcrete {
+                colorOverride 0.64 0.62 0.59
+              }
+              geometry DEF GEOM_PIPE_PIER_EAST Box {
+                size 0.55 0.95 0.78
+              }
+            }
+          ]
+          name "pipe_pier_east"
+          boundingObject USE GEOM_PIPE_PIER_EAST
+        }
+        Solid {
+          translation 7.4 13.5 0.98
+          rotation 0 1 0 1.5708
+          children [
+            Shape {
+              appearance MetalPipePaint {
+                textureTransform TextureTransform {
+                  scale 2 1
+                }
+              }
+              geometry DEF GEOM_GAS_PIPE_WEST Cylinder {
+                height 3.9
+                radius 0.2
+                subdivision 14
+              }
+            }
+          ]
+          name "gas_pipe_west"
+          boundingObject USE GEOM_GAS_PIPE_WEST
+        }
+        Solid {
+          translation 9.32 13.5 0.98
+          rotation 0 1 0 1.5708
+          children [
+            Shape {
+              appearance BrushedAluminium {
+                colorOverride 0.62 0.64 0.66
+              }
+              geometry DEF GEOM_GAS_FLANGE_WEST Cylinder {
+                height 0.09
+                radius 0.28
+                subdivision 14
+              }
+            }
+          ]
+          name "gas_flange_west"
+          boundingObject USE GEOM_GAS_FLANGE_WEST
+        }
+        Solid {
+          translation 14.8 13.5 1.604
+          children [
+            Shape {
+              appearance CorrodedMetal {
+                colorOverride 0.74 0.72 0.66
+                textureTransform TextureTransform {
+                  scale 2 2
+                }
+              }
+              geometry DEF GEOM_GAS_STORAGE_TANK Cylinder {
+                height 3.2
+                radius 1.05
+                subdivision 14
+              }
+            }
+          ]
+          name "gas_storage_tank"
+          boundingObject USE GEOM_GAS_STORAGE_TANK
+        }
+        Solid {
+          translation 11.75 13.42 0.86
+          rotation 0.029980146164061902 0.9991748713390838 -0.027400133585566918 1.66162
+          children [
+            Shape {
+              appearance MetalPipePaint {
+                textureTransform TextureTransform {
+                  scale 2 1
+                }
+              }
+              geometry DEF GEOM_GAS_PIPE_EAST_RUPTURED Cylinder {
+                height 4.3
+                radius 0.2
+                subdivision 14
+              }
+            }
+          ]
+          name "gas_pipe_east_ruptured"
+          boundingObject USE GEOM_GAS_PIPE_EAST_RUPTURED
+        }
+        Solid {
+          translation 9.68 13.3 0.68
+          rotation 0.029980146164061902 0.9991748713390838 -0.027400133585566918 1.66162
+          children [
+            Shape {
+              appearance CorrodedMetal {
+                colorOverride 0.52 0.38 0.28
+                textureTransform TextureTransform {
+                }
+              }
+              geometry DEF GEOM_GAS_FLANGE_EAST_BROKEN Cylinder {
+                height 0.09
+                radius 0.28
+                subdivision 14
+              }
+            }
+          ]
+          name "gas_flange_east_broken"
+          boundingObject USE GEOM_GAS_FLANGE_EAST_BROKEN
+        }
+        Solid {
+          translation 9.1 12.6 0.0716
+          rotation 1 0 0 0.18
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.72 0.14 0.12
+                roughness 0.65
+                metalness 0.4
+              }
+              geometry DEF GEOM_GAS_BROKEN_VALVE_WHEEL Cylinder {
+                height 0.05
+                radius 0.24
+                subdivision 14
+              }
+            }
+          ]
+          name "gas_broken_valve_wheel"
+          boundingObject USE GEOM_GAS_BROKEN_VALVE_WHEEL
+        }
+        Solid {
+          translation 10.5 17.2 1.204
+          children [
+            Shape {
+              appearance CorrugatedMetal {
+                colorOverride 0.56 0.58 0.56
+                textureTransform TextureTransform {
+                  scale 4 2
+                }
+              }
+              geometry DEF GEOM_GAS_UTILITY_WALL_N Box {
+                size 9 0.32 2.4
+              }
+            }
+          ]
+          name "gas_utility_wall_n"
+          boundingObject USE GEOM_GAS_UTILITY_WALL_N
+        }
+        Solid {
+          translation 10.7675 15.915 0.1239
+          rotation 0.2568387045088417 -0.01639991727902587 0.9663151259187973 1.72272
+          children [
+            Shape {
+              appearance RoughConcrete {
+                colorOverride 0.56 0.53 0.49
+                textureTransform TextureTransform {
+                }
+              }
+              geometry DEF GEOM_GAS_YARD_DEBRIS_CHUNK_1 Box {
+                size 0.3722 0.2283 0.0798
+              }
+            }
+          ]
+          name "gas_yard_debris_chunk_1"
+          boundingObject USE GEOM_GAS_YARD_DEBRIS_CHUNK_1
+        }
+        Solid {
+          translation 12.3697 15.5497 0.1945
+          rotation -0.23158002328537253 0.035440003563492535 0.9721700977517083 0.96835
+          children [
+            Shape {
+              appearance RedBricks {
+                textureTransform TextureTransform {
+                }
+              }
+              geometry DEF GEOM_GAS_YARD_DEBRIS_CHUNK_2 Box {
+                size 0.6373 0.5053 0.2164
+              }
+            }
+          ]
+          name "gas_yard_debris_chunk_2"
+          boundingObject USE GEOM_GAS_YARD_DEBRIS_CHUNK_2
+        }
+        Solid {
+          translation 13.7599 15.5337 0.1261
+          rotation -0.3509397743282507 -0.5768396290633959 0.7376295256674861 0.46564
+          children [
+            Shape {
+              appearance RoughConcrete {
+                colorOverride 0.82 0.8 0.76
+                textureTransform TextureTransform {
+                }
+              }
+              geometry DEF GEOM_GAS_YARD_DEBRIS_CHUNK_3 Box {
+                size 0.1342 0.1906 0.1835
+              }
+            }
+          ]
+          name "gas_yard_debris_chunk_3"
+          boundingObject USE GEOM_GAS_YARD_DEBRIS_CHUNK_3
+        }
+        Solid {
+          translation 11.3077 16.0354 0.1091
+          rotation 0.011640039808422214 0.12304042079280664 0.9923333937363933 2.49709
+          children [
+            Shape {
+              appearance RedBricks {
+                textureTransform TextureTransform {
+                }
+              }
+              geometry DEF GEOM_GAS_YARD_DEBRIS_CHUNK_4 Box {
+                size 0.3949 0.1987 0.1483
+              }
+            }
+          ]
+          name "gas_yard_debris_chunk_4"
+          boundingObject USE GEOM_GAS_YARD_DEBRIS_CHUNK_4
+        }
+        Solid {
+          translation 12.8583 15.6482 0.2291
+          rotation 0.3006308059622081 0.9487725435677217 0.09722026063814612 0.23197
+          children [
+            Shape {
+              appearance RoughConcrete {
+                colorOverride 0.56 0.53 0.49
+                textureTransform TextureTransform {
+                }
+              }
+              geometry DEF GEOM_GAS_YARD_DEBRIS_CHUNK_5 Box {
+                size 0.4539 0.4122 0.3308
+              }
+            }
+          ]
+          name "gas_yard_debris_chunk_5"
+          boundingObject USE GEOM_GAS_YARD_DEBRIS_CHUNK_5
+        }
+        Solid {
+          translation 12.047 15.86 0.1689
+          rotation 0.01392996823552965 0.26720939068312116 0.9635378028472533 0.86489
+          children [
+            Shape {
+              appearance RedBricks {
+                textureTransform TextureTransform {
+                }
+              }
+              geometry DEF GEOM_GAS_YARD_DEBRIS_CHUNK_6 Box {
+                size 0.6002 0.5291 0.1613
+              }
+            }
+          ]
+          name "gas_yard_debris_chunk_6"
+          boundingObject USE GEOM_GAS_YARD_DEBRIS_CHUNK_6
+        }
+        Solid {
+          translation 12.7371 16.6207 0.0714
+          rotation -0.9624899429243481 -0.07438999558867339 0.26091998452744536 0.20835
+          children [
+            Shape {
+              appearance RoughConcrete {
+                colorOverride 0.76 0.75 0.72
+                textureTransform TextureTransform {
+                }
+              }
+              geometry DEF GEOM_GAS_YARD_DEBRIS_CHUNK_7 Box {
+                size 0.1755 0.1747 0.1003
+              }
+            }
+          ]
+          name "gas_yard_debris_chunk_7"
+          boundingObject USE GEOM_GAS_YARD_DEBRIS_CHUNK_7
+        }
+      ]
+    }
+    DEF Gas_Leak_Source Pose {
+      translation 9.5 13.45 0.92
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.72 0.88 0.42
+            transparency 0.58
+            roughness 0.95
+            metalness 0
+            emissiveColor 0.35 0.55 0.15
+            emissiveIntensity 0.35
+          }
+          geometry Sphere {
+            radius 0.16
+            subdivision 2
+          }
+          castShadows FALSE
+        }
+        Pose {
+          translation 0.18 -0.1 -0.05
+          rotation 0 1 0 1.35
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.68 0.84 0.4
+                transparency 0.74
+                roughness 1
+                metalness 0
+              }
+              geometry Cone {
+                bottomRadius 0.34
+                height 0.75
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+      ]
+    }
+    DEF Gas_Plume_Visual Group {
+      children [
+        Transform {
+          translation 9.7 13.2 0.95
+          scale 0.65 0.55 0.45
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.68 0.82 0.46
+                transparency 0.82
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                subdivision 2
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Transform {
+          translation 10.1 12.8 1.1
+          scale 0.95 0.8 0.62
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.68 0.82 0.46
+                transparency 0.85
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                subdivision 2
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Transform {
+          translation 9.2 12.7 0.85
+          scale 0.85 0.75 0.55
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.68 0.82 0.46
+                transparency 0.86
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                subdivision 2
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Transform {
+          translation 10.6 12.2 1.25
+          scale 1.25 1.05 0.78
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.68 0.82 0.46
+                transparency 0.88
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                subdivision 2
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Transform {
+          translation 9.8 11.9 1
+          scale 1.15 0.95 0.7
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.68 0.82 0.46
+                transparency 0.88
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                subdivision 2
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Transform {
+          translation 11.3 11.8 1.35
+          scale 1.45 1.2 0.85
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.68 0.82 0.46
+                transparency 0.9
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                subdivision 2
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Transform {
+          translation 10.4 11.2 1.05
+          scale 1.35 1.15 0.8
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.68 0.82 0.46
+                transparency 0.91
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                subdivision 2
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Transform {
+          translation 8.7 12.2 0.9
+          scale 1.05 0.9 0.65
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.68 0.82 0.46
+                transparency 0.9
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                subdivision 2
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Transform {
+          translation 11.9 11.3 1.45
+          scale 1.6 1.3 0.9
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.68 0.82 0.46
+                transparency 0.92
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                subdivision 2
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Transform {
+          translation 10.8 13.6 1.2
+          scale 1.05 0.95 0.68
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.68 0.82 0.46
+                transparency 0.9
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                subdivision 2
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Transform {
+          translation 9.5 14.1 1.15
+          scale 0.95 0.85 0.6
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.68 0.82 0.46
+                transparency 0.91
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                subdivision 2
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Transform {
+          translation 12.3 12.3 1.3
+          scale 1.35 1.15 0.78
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.68 0.82 0.46
+                transparency 0.92
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                subdivision 2
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+      ]
+    }
+    DEF Gas_Hazard_Boundary Group {
+      children [
+        Pose {
+          translation 14 13 0.032
+          rotation 0 0 1 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.86 0.74 0.12
+                transparency 0.15
+                roughness 0.85
+                metalness 0
+              }
+              geometry Box {
+                size 0.68 0.14 0.005
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 13.6955 14.3011 0.032
+          rotation 0 0 1 1.9635
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.86 0.74 0.12
+                transparency 0.15
+                roughness 0.85
+                metalness 0
+              }
+              geometry Box {
+                size 0.68 0.14 0.005
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 12.8284 15.4042 0.032
+          rotation 0 0 1 2.35619
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.86 0.74 0.12
+                transparency 0.15
+                roughness 0.85
+                metalness 0
+              }
+              geometry Box {
+                size 0.68 0.14 0.005
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 11.5307 16.1412 0.032
+          rotation 0 0 1 2.74889
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.86 0.74 0.12
+                transparency 0.15
+                roughness 0.85
+                metalness 0
+              }
+              geometry Box {
+                size 0.68 0.14 0.005
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 10 16.4 0.032
+          rotation 0 0 1 3.14159
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.86 0.74 0.12
+                transparency 0.15
+                roughness 0.85
+                metalness 0
+              }
+              geometry Box {
+                size 0.68 0.14 0.005
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 8.4693 16.1412 0.032
+          rotation 0 0 1 3.53429
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.86 0.74 0.12
+                transparency 0.15
+                roughness 0.85
+                metalness 0
+              }
+              geometry Box {
+                size 0.68 0.14 0.005
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 7.1716 15.4042 0.032
+          rotation 0 0 1 3.92699
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.86 0.74 0.12
+                transparency 0.15
+                roughness 0.85
+                metalness 0
+              }
+              geometry Box {
+                size 0.68 0.14 0.005
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 6.3045 14.3011 0.032
+          rotation 0 0 1 4.31969
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.86 0.74 0.12
+                transparency 0.15
+                roughness 0.85
+                metalness 0
+              }
+              geometry Box {
+                size 0.68 0.14 0.005
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 6 13 0.032
+          rotation 0 0 1 4.71239
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.86 0.74 0.12
+                transparency 0.15
+                roughness 0.85
+                metalness 0
+              }
+              geometry Box {
+                size 0.68 0.14 0.005
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 6.3045 11.6989 0.032
+          rotation 0 0 1 5.10509
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.86 0.74 0.12
+                transparency 0.15
+                roughness 0.85
+                metalness 0
+              }
+              geometry Box {
+                size 0.68 0.14 0.005
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 7.1716 10.5958 0.032
+          rotation 0 0 1 5.49779
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.86 0.74 0.12
+                transparency 0.15
+                roughness 0.85
+                metalness 0
+              }
+              geometry Box {
+                size 0.68 0.14 0.005
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 8.4693 9.8588 0.032
+          rotation 0 0 1 5.89049
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.86 0.74 0.12
+                transparency 0.15
+                roughness 0.85
+                metalness 0
+              }
+              geometry Box {
+                size 0.68 0.14 0.005
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 10 9.6 0.032
+          rotation 0 0 1 6.28319
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.86 0.74 0.12
+                transparency 0.15
+                roughness 0.85
+                metalness 0
+              }
+              geometry Box {
+                size 0.68 0.14 0.005
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 11.5307 9.8588 0.032
+          rotation 0 0 1 6.67588
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.86 0.74 0.12
+                transparency 0.15
+                roughness 0.85
+                metalness 0
+              }
+              geometry Box {
+                size 0.68 0.14 0.005
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 12.8284 10.5958 0.032
+          rotation 0 0 1 7.06858
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.86 0.74 0.12
+                transparency 0.15
+                roughness 0.85
+                metalness 0
+              }
+              geometry Box {
+                size 0.68 0.14 0.005
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 13.6955 11.6989 0.032
+          rotation 0 0 1 7.46128
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.86 0.74 0.12
+                transparency 0.15
+                roughness 0.85
+                metalness 0
+              }
+              geometry Box {
+                size 0.68 0.14 0.005
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Solid {
+          translation 4.5 10.6 0.454
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.88 0.68 0.1
+                roughness 0.65
+                metalness 0.2
+              }
+              geometry DEF GEOM_GAS_BOLLARD_S Cylinder {
+                height 0.9
+                radius 0.11
+                subdivision 14
+              }
+            }
+          ]
+          name "gas_bollard_s"
+          boundingObject USE GEOM_GAS_BOLLARD_S
+        }
+        Solid {
+          translation 4.5 14.8 0.454
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.88 0.68 0.1
+                roughness 0.65
+                metalness 0.2
+              }
+              geometry DEF GEOM_GAS_BOLLARD_N Cylinder {
+                height 0.9
+                radius 0.11
+                subdivision 14
+              }
+            }
+          ]
+          name "gas_bollard_n"
+          boundingObject USE GEOM_GAS_BOLLARD_N
+        }
+      ]
+    }
+  ]
+}
+DEF Fire_Damage_Zone Group {
+  children [
+    Solid {
+      translation -13.6 13.8 1.554
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.18 0.17 0.17
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_FIRE_WALL_WEST Box {
+            size 0.36 6.8 3.1
+          }
+        }
+      ]
+      name "fire_wall_west"
+      boundingObject USE GEOM_FIRE_WALL_WEST
+    }
+    Solid {
+      translation -8.8 17 1.654
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_FIRE_WALL_NORTH Box {
+            size 9.4 0.36 3.3
+          }
+        }
+      ]
+      name "fire_wall_north"
+      boundingObject USE GEOM_FIRE_WALL_NORTH
+    }
+    Solid {
+      translation -4.2 15.2 1.104
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.18 0.17 0.17
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_FIRE_WALL_EAST_STUB Box {
+            size 0.36 3.4 2.2
+          }
+        }
+      ]
+      name "fire_wall_east_stub"
+      boundingObject USE GEOM_FIRE_WALL_EAST_STUB
+    }
+    Pose {
+      translation -8.4 13.4 0.031
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.09 0.08 0.08
+            transparency 0.22
+            roughness 0.98
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.004
+            radius 2.8
+            subdivision 18
+          }
+          castShadows FALSE
+        }
+      ]
+    }
+    Solid {
+      translation -9.4 13.6 0.2799
+      rotation 0.04478007770693627 0.33579058269790374 0.9408716326959609 0.44185
+      children [
+        Shape {
+          appearance OldPlywood {
+            colorOverride 0.14 0.12 0.11
+            textureTransform TextureTransform {
+              scale 2 1
+            }
+          }
+          geometry DEF GEOM_FIRE_CHARRED_BEAM_1 Box {
+            size 2.6 0.22 0.18
+          }
+        }
+      ]
+      name "fire_charred_beam_1"
+      boundingObject USE GEOM_FIRE_CHARRED_BEAM_1
+    }
+    Solid {
+      translation -7.6 14.4 0.2228
+      rotation -0.18685993440283158 -0.15519994551706873 -0.9700496594641269 0.60181
+      children [
+        Shape {
+          appearance OldPlywood {
+            colorOverride 0.14 0.12 0.11
+            textureTransform TextureTransform {
+              scale 2 1
+            }
+          }
+          geometry DEF GEOM_FIRE_CHARRED_BEAM_2 Box {
+            size 2.2 0.2 0.16
+          }
+        }
+      ]
+      name "fire_charred_beam_2"
+      boundingObject USE GEOM_FIRE_CHARRED_BEAM_2
+    }
+    Solid {
+      translation -11.2 15 0.901
+      rotation -0.6226687129139671 0.6605586345936855 0.4194591329578953 0.45176
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.18 0.17 0.17
+            textureTransform TextureTransform {
+              scale 2 2
+            }
+          }
+          geometry DEF GEOM_FIRE_CHARRED_SLAB Box {
+            size 3.2 2.4 0.22
+          }
+        }
+      ]
+      name "fire_charred_slab"
+      boundingObject USE GEOM_FIRE_CHARRED_SLAB
+    }
+    Solid {
+      translation -11.6 11.4 0.729
+      rotation 0 0 1 0.16
+      children [
+        Shape {
+          appearance CorrodedMetal {
+            colorOverride 0.28 0.29 0.28
+          }
+          geometry DEF GEOM_FIRE_TRANSFORMER_BOX Box {
+            size 1.3 0.95 1.45
+          }
+        }
+      ]
+      name "fire_transformer_box"
+      boundingObject USE GEOM_FIRE_TRANSFORMER_BOX
+    }
+    Solid {
+      translation -10.1 11.2 0.6188
+      rotation 0.8119106070657879 -0.08146006090771031 -0.5780704322234237 0.34371
+      children [
+        Shape {
+          appearance BrushedAluminium {
+            colorOverride 0.36 0.35 0.34
+          }
+          geometry DEF GEOM_FIRE_BREAKER_PANEL Box {
+            size 0.65 0.45 1.15
+          }
+        }
+      ]
+      name "fire_breaker_panel"
+      boundingObject USE GEOM_FIRE_BREAKER_PANEL
+    }
+    Solid {
+      translation -7.8 10.4 0.1909
+      rotation -0.10907963294219875 0.9876566764914926 0.1124096217366388 1.55321
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.4 0.39 0.38
+          }
+          geometry DEF GEOM_FIRE_TOPPLED_UTILITY_POLE Cylinder {
+            height 3.8
+            radius 0.13
+            subdivision 14
+          }
+        }
+      ]
+      name "fire_toppled_utility_pole"
+      boundingObject USE GEOM_FIRE_TOPPLED_UTILITY_POLE
+    }
+    DEF Fire_Heat_Source_01 Pose {
+      translation -8.5 13.4 0.03
+      children [
+        Pose {
+          translation 0 0 0.069
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.25 0.06 0.02
+                roughness 0.95
+                metalness 0
+                emissiveColor 1 0.24 0.02
+                emissiveIntensity 2.4
+              }
+              geometry Cylinder {
+                height 0.115
+                radius 0.828
+                subdivision 12
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 0 0 0.598
+          rotation 0.7998367633871019 -0.599737573106847 0.023999902882189495 0.09999
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.95 0.22 0.02
+                transparency 0.45
+                roughness 0.8
+                metalness 0
+                emissiveColor 1 0.28 0.03
+                emissiveIntensity 2.6
+              }
+              geometry Cone {
+                bottomRadius 0.483
+                height 1.208
+                subdivision 10
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 0.299 0.161 0.46
+          rotation -0.3675611978655177 0.2807109148243266 0.8866228894643741 0.46208
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.95 0.22 0.02
+                transparency 0.45
+                roughness 0.8
+                metalness 0
+                emissiveColor 1 0.28 0.03
+                emissiveIntensity 2.6
+              }
+              geometry Cone {
+                bottomRadius 0.322
+                height 0.92
+                subdivision 8
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation -0.276 -0.184 0.437
+          rotation 0.23921032611565987 -0.2971804051463225 -0.924371260196198 0.52871
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.95 0.22 0.02
+                transparency 0.45
+                roughness 0.8
+                metalness 0
+                emissiveColor 1 0.28 0.03
+                emissiveIntensity 2.6
+              }
+              geometry Cone {
+                bottomRadius 0.345
+                height 0.874
+                subdivision 8
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 0.0575 -0.046 0.483
+          rotation -0.3002988717041839 0.3266587726636321 0.896166632884244 0.22567
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 1 0.55 0.05
+                transparency 0.35
+                roughness 0.7
+                metalness 0
+                emissiveColor 1 0.58 0.06
+                emissiveIntensity 3.2
+              }
+              geometry Cone {
+                bottomRadius 0.322
+                height 0.943
+                subdivision 8
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation -0.161 0.138 0.391
+          rotation 0.06759985332199739 0.1666396384257048 0.983697865574687 0.80679
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 1 0.55 0.05
+                transparency 0.35
+                roughness 0.7
+                metalness 0
+                emissiveColor 1 0.58 0.06
+                emissiveIntensity 3.2
+              }
+              geometry Cone {
+                bottomRadius 0.253
+                height 0.736
+                subdivision 8
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 0 0 0.322
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 1 0.88 0.35
+                transparency 0.25
+                roughness 0.6
+                metalness 0
+                emissiveColor 1 0.9 0.4
+                emissiveIntensity 3.8
+              }
+              geometry Cone {
+                bottomRadius 0.207
+                height 0.598
+                subdivision 8
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        PointLight {
+          attenuation 0 0 1
+          color 1 0.45 0.12
+          intensity 4.2
+          location 0 0 0.85
+          radius 9.5
+        }
+      ]
+    }
+    DEF Fire_Heat_Source_02 Pose {
+      translation -7.1 14.2 0.03
+      children [
+        Pose {
+          translation 0 0 0.0468
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.25 0.06 0.02
+                roughness 0.95
+                metalness 0
+                emissiveColor 1 0.24 0.02
+                emissiveIntensity 2.4
+              }
+              geometry Cylinder {
+                height 0.078
+                radius 0.562
+                subdivision 12
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 0 0 0.4056
+          rotation 0.7998367633871019 -0.599737573106847 0.023999902882189495 0.09999
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.95 0.22 0.02
+                transparency 0.45
+                roughness 0.8
+                metalness 0
+                emissiveColor 1 0.28 0.03
+                emissiveIntensity 2.6
+              }
+              geometry Cone {
+                bottomRadius 0.328
+                height 0.819
+                subdivision 10
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 0.2028 0.1092 0.312
+          rotation -0.3675611978655177 0.2807109148243266 0.8866228894643741 0.46208
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.95 0.22 0.02
+                transparency 0.45
+                roughness 0.8
+                metalness 0
+                emissiveColor 1 0.28 0.03
+                emissiveIntensity 2.6
+              }
+              geometry Cone {
+                bottomRadius 0.218
+                height 0.624
+                subdivision 8
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation -0.1872 -0.1248 0.2964
+          rotation 0.23921032611565987 -0.2971804051463225 -0.924371260196198 0.52871
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.95 0.22 0.02
+                transparency 0.45
+                roughness 0.8
+                metalness 0
+                emissiveColor 1 0.28 0.03
+                emissiveIntensity 2.6
+              }
+              geometry Cone {
+                bottomRadius 0.234
+                height 0.593
+                subdivision 8
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 0.039 -0.0312 0.3276
+          rotation -0.3002988717041839 0.3266587726636321 0.896166632884244 0.22567
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 1 0.55 0.05
+                transparency 0.35
+                roughness 0.7
+                metalness 0
+                emissiveColor 1 0.58 0.06
+                emissiveIntensity 3.2
+              }
+              geometry Cone {
+                bottomRadius 0.218
+                height 0.64
+                subdivision 8
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation -0.1092 0.0936 0.2652
+          rotation 0.06759985332199739 0.1666396384257048 0.983697865574687 0.80679
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 1 0.55 0.05
+                transparency 0.35
+                roughness 0.7
+                metalness 0
+                emissiveColor 1 0.58 0.06
+                emissiveIntensity 3.2
+              }
+              geometry Cone {
+                bottomRadius 0.172
+                height 0.499
+                subdivision 8
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Pose {
+          translation 0 0 0.2184
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 1 0.88 0.35
+                transparency 0.25
+                roughness 0.6
+                metalness 0
+                emissiveColor 1 0.9 0.4
+                emissiveIntensity 3.8
+              }
+              geometry Cone {
+                bottomRadius 0.14
+                height 0.406
+                subdivision 8
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+      ]
+    }
+    DEF Smoke_Plume_Visual Group {
+      children [
+        Transform {
+          translation -8.4 13.5 1.35
+          scale 0.55 0.5 0.45
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.16 0.16 0.163
+                transparency 0.68
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                subdivision 2
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Transform {
+          translation -8.1 13.7 2.05
+          scale 0.78 0.72 0.62
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.2 0.2 0.204
+                transparency 0.74
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                subdivision 2
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Transform {
+          translation -7.7 13.9 2.85
+          scale 1.02 0.92 0.78
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.24 0.24 0.245
+                transparency 0.79
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                subdivision 2
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Transform {
+          translation -7.2 14.1 3.75
+          scale 1.28 1.12 0.92
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.28 0.28 0.286
+                transparency 0.83
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                subdivision 2
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Transform {
+          translation -6.6 14.3 4.75
+          scale 1.55 1.35 1.05
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.33 0.33 0.337
+                transparency 0.87
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                subdivision 2
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Transform {
+          translation -5.9 14.6 5.85
+          scale 1.85 1.55 1.18
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.38 0.38 0.388
+                transparency 0.91
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                subdivision 2
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Transform {
+          translation -7.2 14.2 1.15
+          scale 0.42 0.4 0.38
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.18 0.18 0.184
+                transparency 0.72
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                subdivision 2
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+        Transform {
+          translation -6.8 14.4 1.85
+          scale 0.64 0.58 0.52
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.22 0.22 0.224
+                transparency 0.78
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                subdivision 2
+              }
+              castShadows FALSE
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+DEF Concrete_Debris Group {
+  children [
+    Solid {
+      translation -2.8238 4.2523 0.1433
+      rotation -0.04623995425483588 0.12218987911761235 0.9914290191797563 1.90372
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_CORRIDOR_WEST_MARGIN_DEBRIS_CHUNK_1 Box {
+            size 0.7236 0.2964 0.115
+          }
+        }
+      ]
+      name "corridor_west_margin_debris_chunk_1"
+      boundingObject USE GEOM_CORRIDOR_WEST_MARGIN_DEBRIS_CHUNK_1
+    }
+    Solid {
+      translation -2.7258 4.5495 0.1317
+      rotation -0.005449993322127275 -0.19599975984164145 0.9805887984852815 1.25689
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.82 0.8 0.76
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_CORRIDOR_WEST_MARGIN_DEBRIS_CHUNK_2 Box {
+            size 0.2803 0.2581 0.169
+          }
+        }
+      ]
+      name "corridor_west_margin_debris_chunk_2"
+      boundingObject USE GEOM_CORRIDOR_WEST_MARGIN_DEBRIS_CHUNK_2
+    }
+    Solid {
+      translation -2.7265 4.7259 0.2097
+      rotation 0.16838999754992554 0.0762099988911445 0.9827699857006966 2.36962
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.76 0.75 0.72
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_CORRIDOR_WEST_MARGIN_DEBRIS_CHUNK_3 Box {
+            size 0.6569 0.316 0.1892
+          }
+        }
+      ]
+      name "corridor_west_margin_debris_chunk_3"
+      boundingObject USE GEOM_CORRIDOR_WEST_MARGIN_DEBRIS_CHUNK_3
+    }
+    Solid {
+      translation -2.6419 4.7439 0.1301
+      rotation 0.41773083489856755 -0.03407006809420965 0.9079318146397348 0.38895
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_CORRIDOR_WEST_MARGIN_DEBRIS_CHUNK_4 Box {
+            size 0.3616 0.5605 0.1477
+          }
+        }
+      ]
+      name "corridor_west_margin_debris_chunk_4"
+      boundingObject USE GEOM_CORRIDOR_WEST_MARGIN_DEBRIS_CHUNK_4
+    }
+    Solid {
+      translation -2.2447 4.3577 0.1572
+      rotation 0.06580996549584413 -0.1282999327323629 0.9895494811793429 2.89078
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.56 0.53 0.49
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_CORRIDOR_WEST_MARGIN_DEBRIS_CHUNK_5 Box {
+            size 0.2145 0.4108 0.1795
+          }
+        }
+      ]
+      name "corridor_west_margin_debris_chunk_5"
+      boundingObject USE GEOM_CORRIDOR_WEST_MARGIN_DEBRIS_CHUNK_5
+    }
+    Solid {
+      translation -1.9553 4.629 0.0913
+      rotation 0.13829061732377904 0.23794106215937513 0.961384291580987 1.06322
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_CORRIDOR_WEST_MARGIN_DEBRIS_CHUNK_6 Box {
+            size 0.2908 0.2764 0.0667
+          }
+        }
+      ]
+      name "corridor_west_margin_debris_chunk_6"
+      boundingObject USE GEOM_CORRIDOR_WEST_MARGIN_DEBRIS_CHUNK_6
+    }
+    Solid {
+      translation 3.0484 -2.9691 0.1048
+      rotation 0.02441999958241801 -0.10726999816568306 0.9939299830037974 2.12838
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_CORRIDOR_EAST_MARGIN_DEBRIS_CHUNK_1 Box {
+            size 0.2315 0.3872 0.1149
+          }
+        }
+      ]
+      name "corridor_east_margin_debris_chunk_1"
+      boundingObject USE GEOM_CORRIDOR_EAST_MARGIN_DEBRIS_CHUNK_1
+    }
+    Solid {
+      translation 2.9937 -3.3388 0.0745
+      rotation 0.005739998257910793 -0.1333699595222234 0.9910496992164618 2.64846
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.65 0.63 0.59
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_CORRIDOR_EAST_MARGIN_DEBRIS_CHUNK_2 Box {
+            size 0.4583 0.1397 0.0713
+          }
+        }
+      ]
+      name "corridor_east_margin_debris_chunk_2"
+      boundingObject USE GEOM_CORRIDOR_EAST_MARGIN_DEBRIS_CHUNK_2
+    }
+    Solid {
+      translation 3.3368 -2.2574 0.0833
+      rotation -0.0025199953963506152 0.19052965193122331 0.9816782066228064 1.76736
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_CORRIDOR_EAST_MARGIN_DEBRIS_CHUNK_3 Box {
+            size 0.1612 0.2809 0.0647
+          }
+        }
+      ]
+      name "corridor_east_margin_debris_chunk_3"
+      boundingObject USE GEOM_CORRIDOR_EAST_MARGIN_DEBRIS_CHUNK_3
+    }
+    Solid {
+      translation 3.2997 -2.9153 0.1058
+      rotation 0.08529955949288734 0.2506787054358382 0.9643050201006588 1.13726
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_CORRIDOR_EAST_MARGIN_DEBRIS_CHUNK_4 Box {
+            size 0.3698 0.1546 0.1037
+          }
+        }
+      ]
+      name "corridor_east_margin_debris_chunk_4"
+      boundingObject USE GEOM_CORRIDOR_EAST_MARGIN_DEBRIS_CHUNK_4
+    }
+    Solid {
+      translation 3.3415 -2.0589 0.0907
+      rotation 0.12546986360178541 -0.14817983891378467 0.980968933589252 2.73622
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.56 0.53 0.49
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_CORRIDOR_EAST_MARGIN_DEBRIS_CHUNK_5 Box {
+            size 0.1213 0.2038 0.0937
+          }
+        }
+      ]
+      name "corridor_east_margin_debris_chunk_5"
+      boundingObject USE GEOM_CORRIDOR_EAST_MARGIN_DEBRIS_CHUNK_5
+    }
+    Solid {
+      translation 2.5497 -3.5223 0.1281
+      rotation -0.1646702415796551 -0.11163016376715186 0.9800114377268343 2.2698
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_CORRIDOR_EAST_MARGIN_DEBRIS_CHUNK_6 Box {
+            size 0.4054 0.2971 0.086
+          }
+        }
+      ]
+      name "corridor_east_margin_debris_chunk_6"
+      boundingObject USE GEOM_CORRIDOR_EAST_MARGIN_DEBRIS_CHUNK_6
+    }
+    Solid {
+      translation 0.7558 -11.2318 0.1943
+      rotation -0.3668495648249619 0.16583980327265005 0.9153789141324072 0.80289
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_ROAD_SOUTH_MARGIN_DEBRIS_CHUNK_1 Box {
+            size 0.6664 0.44 0.14
+          }
+        }
+      ]
+      name "road_south_margin_debris_chunk_1"
+      boundingObject USE GEOM_ROAD_SOUTH_MARGIN_DEBRIS_CHUNK_1
+    }
+    Solid {
+      translation 1.5818 -11.7067 0.1464
+      rotation -0.33709988934697954 0.09038997032949711 0.9371196923905115 0.8853
+      children [
+        Shape {
+          appearance RedBricks {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_ROAD_SOUTH_MARGIN_DEBRIS_CHUNK_2 Box {
+            size 0.2467 0.4173 0.1455
+          }
+        }
+      ]
+      name "road_south_margin_debris_chunk_2"
+      boundingObject USE GEOM_ROAD_SOUTH_MARGIN_DEBRIS_CHUNK_2
+    }
+    Solid {
+      translation 1.407 -11.8246 0.0956
+      rotation -0.2022209676700898 0.08726041755954918 0.9754446677089921 1.10706
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.65 0.63 0.59
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_ROAD_SOUTH_MARGIN_DEBRIS_CHUNK_3 Box {
+            size 0.1824 0.2777 0.1108
+          }
+        }
+      ]
+      name "road_south_margin_debris_chunk_3"
+      boundingObject USE GEOM_ROAD_SOUTH_MARGIN_DEBRIS_CHUNK_3
+    }
+    Solid {
+      translation 0.54 -11.9286 0.0886
+      rotation -0.3112807766776348 -0.5299513222831939 0.7888319682170993 0.46131
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.82 0.8 0.76
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_ROAD_SOUTH_MARGIN_DEBRIS_CHUNK_4 Box {
+            size 0.2703 0.1651 0.0816
+          }
+        }
+      ]
+      name "road_south_margin_debris_chunk_4"
+      boundingObject USE GEOM_ROAD_SOUTH_MARGIN_DEBRIS_CHUNK_4
+    }
+    Solid {
+      translation 0.9898 -11.0294 0.0832
+      rotation 0.18418951442182316 -0.2172194273451785 0.9585874728791762 0.35228
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.56 0.53 0.49
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_ROAD_SOUTH_MARGIN_DEBRIS_CHUNK_5 Box {
+            size 0.4849 0.1798 0.1042
+          }
+        }
+      ]
+      name "road_south_margin_debris_chunk_5"
+      boundingObject USE GEOM_ROAD_SOUTH_MARGIN_DEBRIS_CHUNK_5
+    }
+    Solid {
+      translation 1.5509 -10.8378 0.0768
+      rotation -0.13049960647903 -0.050389848049642305 0.9901670141558707 2.76718
+      children [
+        Shape {
+          appearance RoughConcrete {
+            colorOverride 0.65 0.63 0.59
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF GEOM_ROAD_SOUTH_MARGIN_DEBRIS_CHUNK_6 Box {
+            size 0.1861 0.2235 0.069
+          }
+        }
+      ]
+      name "road_south_margin_debris_chunk_6"
+      boundingObject USE GEOM_ROAD_SOUTH_MARGIN_DEBRIS_CHUNK_6
+    }
+  ]
+}
+DEF Victim_Locations Group {
+  children [
+    DEF Victim_01 Solid {
+      translation -5.5 -6.15 0.006
+      rotation 0 0 1 0.18
+      children [
+        Pose {
+          translation 0.1 0 0.13
+          rotation 0 1 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.86 0.36 0.12
+                roughness 0.92
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.44
+                radius 0.13
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -0.18 0 0.12
+          rotation 0 1 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.2 0.26 0.38
+                roughness 0.9
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.16
+                radius 0.12
+                subdivision 10
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.4 0 0.11
+          rotation 0 1 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.8 0.62 0.48
+                roughness 0.72
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.08
+                radius 0.055
+                subdivision 10
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.52 0.02 0.115
+          rotation 0 0 1 0.25
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.8 0.62 0.48
+                roughness 0.72
+                metalness 0
+              }
+              geometry Sphere {
+                radius 0.11
+                subdivision 2
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.55 0.02 0.135
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.14 0.11 0.09
+                roughness 0.88
+                metalness 0
+              }
+              geometry Sphere {
+                radius 0.102
+                subdivision 2
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.24 0.22 0.08
+          rotation 0.9514037651878512 -0.21775086175074057 -0.21775086175074057 1.62059
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.86 0.36 0.12
+                roughness 0.92
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.26
+                radius 0.052
+                subdivision 8
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.16 0.44 0.055
+          rotation 0.9900823377851761 -0.09934023456243879 -0.09934023456243879 1.58076
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.8 0.62 0.48
+                roughness 0.72
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.24
+                radius 0.044
+                subdivision 8
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.22 -0.2 0.09
+          rotation 0.9027461600419634 0.3041787061329985 0.3041787061329985 1.67293
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.86 0.36 0.12
+                roughness 0.92
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.26
+                radius 0.052
+                subdivision 8
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.02 -0.32 0.07
+          rotation -0.17153023167746384 0.9701313103087391 0.17153023167746384 1.60111
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.8 0.62 0.48
+                roughness 0.72
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.24
+                radius 0.044
+                subdivision 8
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -0.44 0.11 0.1
+          rotation -0.0746597848980036 0.993647137207357 0.0842097573836175 1.45713
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.2 0.26 0.38
+                roughness 0.9
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.36
+                radius 0.072
+                subdivision 10
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -0.8 0.16 0.08
+          rotation -0.03996000271528228 0.9985200678494409 0.036890002506675755 1.65227
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.2 0.26 0.38
+                roughness 0.9
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.36
+                radius 0.058
+                subdivision 10
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -1.02 0.18 0.06
+          rotation 0 0 1 0.1
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.13 0.12
+                roughness 0.85
+                metalness 0
+              }
+              geometry Box {
+                size 0.12 0.09 0.2
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -0.44 -0.1 0.09
+          rotation 0.049919745087968544 0.9975049063040765 -0.049919745087968544 1.57329
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.2 0.26 0.38
+                roughness 0.9
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.36
+                radius 0.072
+                subdivision 10
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -0.82 -0.14 0.075
+          rotation 0.05986002013392116 0.9964103351426726 -0.05986002013392116 1.57439
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.2 0.26 0.38
+                roughness 0.9
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.36
+                radius 0.058
+                subdivision 10
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -1.04 -0.16 0.06
+          rotation 0 0 -1 0.1
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.13 0.12
+                roughness 0.85
+                metalness 0
+              }
+              geometry Box {
+                size 0.12 0.09 0.2
+              }
+            }
+          ]
+        }
+      ]
+      name "victim_01_entrance"
+      boundingObject Group {
+        children [
+          Pose {
+            translation 0.1 0 0.13
+            rotation 0 1 0 1.5708
+            children [
+              Capsule {
+                height 0.44
+                radius 0.13
+                subdivision 16
+              }
+            ]
+          }
+          Pose {
+            translation 0.52 0.02 0.115
+            rotation 0 0 1 0.25
+            children [
+              Sphere {
+                radius 0.11
+                subdivision 2
+              }
+            ]
+          }
+          Pose {
+            translation -0.44 0.11 0.1
+            rotation -0.0746597848980036 0.993647137207357 0.0842097573836175 1.45713
+            children [
+              Capsule {
+                height 0.36
+                radius 0.072
+                subdivision 16
+              }
+            ]
+          }
+          Pose {
+            translation -0.44 -0.1 0.09
+            rotation 0.049919745087968544 0.9975049063040765 -0.049919745087968544 1.57329
+            children [
+              Capsule {
+                height 0.36
+                radius 0.072
+                subdivision 16
+              }
+            ]
+          }
+        ]
+      }
+    }
+    DEF Victim_02 Solid {
+      translation -8.85 2.4 0.004
+      rotation 0 0 1 0.08
+      children [
+        Pose {
+          translation 0 0 0.12
+          rotation 1 0 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.28 0.26 0.24
+                roughness 0.9
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.2
+                radius 0.12
+                subdivision 10
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -0.08 0 0.42
+          rotation 0 -1 0 0.35
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.22 0.48 0.62
+                roughness 0.92
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.42
+                radius 0.135
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -0.14 0.03 0.76
+          rotation 0.5121623210992907 0.8564738815056028 -0.06436029167828482 0.29135
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.8 0.62 0.48
+                roughness 0.72
+                metalness 0
+              }
+              geometry Sphere {
+                radius 0.11
+                subdivision 2
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -0.17 0.03 0.79
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.14 0.11 0.09
+                roughness 0.88
+                metalness 0
+              }
+              geometry Sphere {
+                radius 0.102
+                subdivision 2
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.02 0.2 0.36
+          rotation 0.40418092040183995 0.9075420666571474 -0.11404025969277506 0.60284
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.22 0.48 0.62
+                roughness 0.92
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.26
+                radius 0.052
+                subdivision 8
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.18 0.24 0.18
+          rotation 0 1 0 1.05
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.8 0.62 0.48
+                roughness 0.72
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.24
+                radius 0.044
+                subdivision 8
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.02 -0.2 0.36
+          rotation -0.4387613631020441 0.8915927699155609 0.11203034804522291 0.55785
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.22 0.48 0.62
+                roughness 0.92
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.26
+                radius 0.052
+                subdivision 8
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.18 -0.22 0.18
+          rotation 0 1 0 1
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.8 0.62 0.48
+                roughness 0.72
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.24
+                radius 0.044
+                subdivision 8
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.28 0.11 0.1
+          rotation -0.08952033734459885 0.9919537380359118 0.08952033734459885 1.57887
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.28 0.26 0.24
+                roughness 0.9
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.36
+                radius 0.072
+                subdivision 10
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.64 0.18 0.08
+          rotation -0.07472009277252477 0.9944012346493393 0.07472009277252477 1.57641
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.28 0.26 0.24
+                roughness 0.9
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.34
+                radius 0.058
+                subdivision 10
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.84 0.21 0.08
+          rotation 0 0 1 0.15
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.13 0.12
+                roughness 0.85
+                metalness 0
+              }
+              geometry Box {
+                size 0.1 0.09 0.18
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.26 -0.12 0.14
+          rotation 0.07455001427632911 0.9920801899833747 -0.10109001935874057 1.2784
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.28 0.26 0.24
+                roughness 0.9
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.34
+                radius 0.072
+                subdivision 10
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.56 -0.18 0.1
+          rotation 0.07483013181713478 0.995821754191356 -0.05234009219977061 1.92473
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.28 0.26 0.24
+                roughness 0.9
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.34
+                radius 0.058
+                subdivision 10
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.76 -0.2 0.07
+          rotation 0 0 -1 0.15
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.13 0.12
+                roughness 0.85
+                metalness 0
+              }
+              geometry Box {
+                size 0.1 0.09 0.18
+              }
+            }
+          ]
+        }
+      ]
+      name "victim_02_residential"
+      boundingObject Group {
+        children [
+          Pose {
+            translation 0 0 0.12
+            rotation 1 0 0 1.5708
+            children [
+              Capsule {
+                height 0.2
+                radius 0.12
+                subdivision 16
+              }
+            ]
+          }
+          Pose {
+            translation -0.08 0 0.42
+            rotation 0 -1 0 0.35
+            children [
+              Capsule {
+                height 0.42
+                radius 0.135
+                subdivision 16
+              }
+            ]
+          }
+          Pose {
+            translation -0.14 0.03 0.76
+            rotation 0.5121623210992907 0.8564738815056028 -0.06436029167828482 0.29135
+            children [
+              Sphere {
+                radius 0.11
+                subdivision 2
+              }
+            ]
+          }
+          Pose {
+            translation 0.28 0.11 0.1
+            rotation -0.08952033734459885 0.9919537380359118 0.08952033734459885 1.57887
+            children [
+              Capsule {
+                height 0.36
+                radius 0.072
+                subdivision 16
+              }
+            ]
+          }
+          Pose {
+            translation 0.26 -0.12 0.14
+            rotation 0.07455001427632911 0.9920801899833747 -0.10109001935874057 1.2784
+            children [
+              Capsule {
+                height 0.34
+                radius 0.072
+                subdivision 16
+              }
+            ]
+          }
+        ]
+      }
+    }
+    DEF Victim_03 Solid {
+      translation 2.85 0.9 0.004
+      rotation 0 0 1 -1.45
+      children [
+        Pose {
+          translation 0.08 0 0.15
+          rotation -0.05986002013392116 0.9964103351426726 0.05986002013392116 1.57439
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.74 0.64 0.22
+                roughness 0.92
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.42
+                radius 0.135
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -0.18 -0.04 0.14
+          rotation 0.049919745087968544 0.9975049063040765 -0.049919745087968544 1.57329
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.18 0.22 0.28
+                roughness 0.9
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.16
+                radius 0.125
+                subdivision 10
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.46 0.08 0.12
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.8 0.62 0.48
+                roughness 0.72
+                metalness 0
+              }
+              geometry Sphere {
+                radius 0.11
+                subdivision 2
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.48 0.05 0.14
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.14 0.11 0.09
+                roughness 0.88
+                metalness 0
+              }
+              geometry Sphere {
+                radius 0.102
+                subdivision 2
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.22 0.18 0.13
+          rotation 0.9405556651249155 -0.24016144653277308 -0.24016144653277308 1.63204
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.74 0.64 0.22
+                roughness 0.92
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.26
+                radius 0.052
+                subdivision 8
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.32 0.34 0.08
+          rotation -0.2834001999530816 0.9161706464044277 0.2834001999530816 1.65824
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.8 0.62 0.48
+                roughness 0.72
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.22
+                radius 0.044
+                subdivision 8
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -0.36 0.14 0.11
+          rotation 0.3041787061329985 0.9027461600419634 -0.3041787061329985 1.67293
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.18 0.22 0.28
+                roughness 0.9
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.34
+                radius 0.072
+                subdivision 10
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -0.62 0.16 0.09
+          rotation -0.21775086175074057 0.9514037651878512 0.21775086175074057 1.62059
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.18 0.22 0.28
+                roughness 0.9
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.34
+                radius 0.058
+                subdivision 10
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -0.82 0.08 0.07
+          rotation 0 0 1 0.3
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.13 0.12
+                roughness 0.85
+                metalness 0
+              }
+              geometry Box {
+                size 0.12 0.09 0.18
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -0.34 0.16 0.21
+          rotation 0.3439304681928651 0.8737411894246908 -0.3439304681928651 1.70536
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.18 0.22 0.28
+                roughness 0.9
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.34
+                radius 0.07
+                subdivision 10
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -0.6 0.14 0.17
+          rotation -0.19485999243943247 0.9612799627023383 0.19485999243943247 1.61028
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.18 0.22 0.28
+                roughness 0.9
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.34
+                radius 0.056
+                subdivision 10
+              }
+            }
+          ]
+        }
+      ]
+      name "victim_03_corridor_rubble"
+      boundingObject Group {
+        children [
+          Pose {
+            translation 0.08 0 0.15
+            rotation -0.05986002013392116 0.9964103351426726 0.05986002013392116 1.57439
+            children [
+              Capsule {
+                height 0.42
+                radius 0.135
+                subdivision 16
+              }
+            ]
+          }
+          Pose {
+            translation 0.46 0.08 0.12
+            children [
+              Sphere {
+                radius 0.11
+                subdivision 2
+              }
+            ]
+          }
+          Pose {
+            translation -0.36 0.14 0.11
+            rotation 0.3041787061329985 0.9027461600419634 -0.3041787061329985 1.67293
+            children [
+              Capsule {
+                height 0.34
+                radius 0.072
+                subdivision 16
+              }
+            ]
+          }
+        ]
+      }
+    }
+    DEF Victim_04 Solid {
+      translation 6.15 6.85 0.004
+      rotation 0 0 1 2.55
+      children [
+        Pose {
+          translation 0.1 0 0.12
+          rotation 0 1 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.68 0.2 0.22
+                roughness 0.92
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.44
+                radius 0.125
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -0.18 0 0.11
+          rotation 0 1 0 1.5708
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.24 0.24 0.26
+                roughness 0.9
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.16
+                radius 0.115
+                subdivision 10
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.48 0.03 0.105
+          rotation 0 0 1 0.4
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.8 0.62 0.48
+                roughness 0.72
+                metalness 0
+              }
+              geometry Sphere {
+                radius 0.108
+                subdivision 2
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.49 0 0.125
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.14 0.11 0.09
+                roughness 0.88
+                metalness 0
+              }
+              geometry Sphere {
+                radius 0.102
+                subdivision 2
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.28 0.22 0.07
+          rotation 0.8885830053705231 -0.32436109705595767 -0.32436109705595767 1.68865
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.68 0.2 0.22
+                roughness 0.92
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.26
+                radius 0.05
+                subdivision 8
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.46 0.34 0.055
+          rotation -0.14780017380571658 0.977911149975293 0.14780017380571658 1.59313
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.8 0.62 0.48
+                roughness 0.72
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.24
+                radius 0.042
+                subdivision 8
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.18 -0.22 0.07
+          rotation 0.9405556651249155 0.24016144653277308 0.24016144653277308 1.63204
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.68 0.2 0.22
+                roughness 0.92
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.26
+                radius 0.05
+                subdivision 8
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -0.44 0.1 0.085
+          rotation -0.05986002013392116 0.9964103351426726 0.05986002013392116 1.57439
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.24 0.24 0.26
+                roughness 0.9
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.36
+                radius 0.07
+                subdivision 10
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -0.82 0.15 0.07
+          rotation -0.049919745087968544 0.9975049063040765 0.049919745087968544 1.57329
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.24 0.24 0.26
+                roughness 0.9
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.36
+                radius 0.056
+                subdivision 10
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -0.44 -0.1 0.085
+          rotation 0.039960076659484596 0.9984019153360716 -0.039960076659484596 1.5724
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.24 0.24 0.26
+                roughness 0.9
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.36
+                radius 0.07
+                subdivision 10
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -0.82 -0.13 0.07
+          rotation 0.039960076659484596 0.9984019153360716 -0.039960076659484596 1.5724
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.24 0.24 0.26
+                roughness 0.9
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.36
+                radius 0.056
+                subdivision 10
+              }
+            }
+          ]
+        }
+      ]
+      name "victim_04_severe_cavity"
+      boundingObject Group {
+        children [
+          Pose {
+            translation 0.1 0 0.12
+            rotation 0 1 0 1.5708
+            children [
+              Capsule {
+                height 0.44
+                radius 0.125
+                subdivision 16
+              }
+            ]
+          }
+          Pose {
+            translation 0.48 0.03 0.105
+            rotation 0 0 1 0.4
+            children [
+              Sphere {
+                radius 0.108
+                subdivision 2
+              }
+            ]
+          }
+          Pose {
+            translation -0.44 0.1 0.085
+            rotation -0.05986002013392116 0.9964103351426726 0.05986002013392116 1.57439
+            children [
+              Capsule {
+                height 0.36
+                radius 0.07
+                subdivision 16
+              }
+            ]
+          }
+          Pose {
+            translation -0.44 -0.1 0.085
+            rotation 0.039960076659484596 0.9984019153360716 -0.039960076659484596 1.5724
+            children [
+              Capsule {
+                height 0.36
+                radius 0.07
+                subdivision 16
+              }
+            ]
+          }
+        ]
+      }
+    }
+    DEF Victim_05 Solid {
+      translation -4.6 11.45 0.004
+      rotation 0 0 1 -0.65
+      children [
+        Pose {
+          translation 0.08 0 0.15
+          rotation -0.05986002013392116 0.9964103351426726 0.05986002013392116 1.57439
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.3 0.56 0.34
+                roughness 0.92
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.42
+                radius 0.135
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -0.18 -0.04 0.14
+          rotation 0.049919745087968544 0.9975049063040765 -0.049919745087968544 1.57329
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.22 0.24 0.32
+                roughness 0.9
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.16
+                radius 0.125
+                subdivision 10
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.46 0.08 0.12
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.8 0.62 0.48
+                roughness 0.72
+                metalness 0
+              }
+              geometry Sphere {
+                radius 0.11
+                subdivision 2
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.48 0.05 0.14
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.14 0.11 0.09
+                roughness 0.88
+                metalness 0
+              }
+              geometry Sphere {
+                radius 0.102
+                subdivision 2
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.22 0.18 0.13
+          rotation 0.9405556651249155 -0.24016144653277308 -0.24016144653277308 1.63204
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.3 0.56 0.34
+                roughness 0.92
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.26
+                radius 0.052
+                subdivision 8
+              }
+            }
+          ]
+        }
+        Pose {
+          translation 0.32 0.34 0.08
+          rotation -0.2834001999530816 0.9161706464044277 0.2834001999530816 1.65824
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.8 0.62 0.48
+                roughness 0.72
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.22
+                radius 0.044
+                subdivision 8
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -0.36 0.14 0.11
+          rotation 0.3041787061329985 0.9027461600419634 -0.3041787061329985 1.67293
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.22 0.24 0.32
+                roughness 0.9
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.34
+                radius 0.072
+                subdivision 10
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -0.62 0.16 0.09
+          rotation -0.21775086175074057 0.9514037651878512 0.21775086175074057 1.62059
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.22 0.24 0.32
+                roughness 0.9
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.34
+                radius 0.058
+                subdivision 10
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -0.82 0.08 0.07
+          rotation 0 0 1 0.3
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.15 0.13 0.12
+                roughness 0.85
+                metalness 0
+              }
+              geometry Box {
+                size 0.12 0.09 0.18
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -0.34 0.16 0.21
+          rotation 0.3439304681928651 0.8737411894246908 -0.3439304681928651 1.70536
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.22 0.24 0.32
+                roughness 0.9
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.34
+                radius 0.07
+                subdivision 10
+              }
+            }
+          ]
+        }
+        Pose {
+          translation -0.6 0.14 0.17
+          rotation -0.19485999243943247 0.9612799627023383 0.19485999243943247 1.61028
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.22 0.24 0.32
+                roughness 0.9
+                metalness 0
+              }
+              geometry Capsule {
+                height 0.34
+                radius 0.056
+                subdivision 10
+              }
+            }
+          ]
+        }
+      ]
+      name "victim_05_fire_annex"
+      boundingObject Group {
+        children [
+          Pose {
+            translation 0.08 0 0.15
+            rotation -0.05986002013392116 0.9964103351426726 0.05986002013392116 1.57439
+            children [
+              Capsule {
+                height 0.42
+                radius 0.135
+                subdivision 16
+              }
+            ]
+          }
+          Pose {
+            translation 0.46 0.08 0.12
+            children [
+              Sphere {
+                radius 0.11
+                subdivision 2
+              }
+            ]
+          }
+          Pose {
+            translation -0.36 0.14 0.11
+            rotation 0.3041787061329985 0.9027461600419634 -0.3041787061329985 1.67293
+            children [
+              Capsule {
+                height 0.34
+                radius 0.072
+                subdivision 16
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
+DEF ResQBot_Env_Supervisor Robot {
+  translation 0 0 -5
+  children [
+    Emitter {
+      name "env_sensor_tx"
+      channel 1
+    }
+  ]
+  name "ResQBot_Env_Supervisor"
+  controller "resqbot_env_supervisor"
+  supervisor TRUE
+}
+ResQBotRover {
+  hidden position_0_0 42.00185584488592
+  hidden position_0_3 38.584215898765024
+  hidden linearVelocity_0 1.7235792101168962e-15 -2.5532291095031484e-16 1.8086383602040612e-16
+  hidden angularVelocity_0 -2.8292967509563105e-16 -2.338975561603601e-16 3.368806442219636e-17
+  hidden translation_11 0.14 0.17 0.065
+  hidden rotation_11 -0.42079058228465727 0.6414575413819741 -0.6414573317569393 3.9381925613495135
+  hidden linearVelocity_11 -3.152764552913786e-15 1.3014562354753908e-15 -1.522603620651284e-17
+  hidden angularVelocity_11 1.0269468667178417e-15 -1.8410365187228254e-15 -6.603156272760141e-16
+  hidden translation_12 0.14 -0.17 0.065
+  hidden linearVelocity_12 -2.6514862351480596e-15 2.226379997789373e-15 4.799889343549933e-17
+  hidden angularVelocity_12 -1.1554301476559747e-15 -2.451901626723063e-16 4.598205644205181e-17
+  hidden translation_13 -0.14 0.17 0.065
+  hidden rotation_13 -0.4198769772711131 0.6417568048489011 -0.641756595126067 3.9366397095576895
+  hidden linearVelocity_13 2.8706698720943778e-15 -2.427125200530053e-15 -1.2815355413469393e-16
+  hidden angularVelocity_13 1.4974427554158092e-15 -5.417949648966404e-16 -6.491121843575183e-16
+  hidden translation_14 -0.14 -0.17 0.065
+  hidden linearVelocity_14 2.9556723302341727e-15 -8.080452747384105e-16 -8.985137664436953e-17
+  hidden angularVelocity_14 -3.6073035312720865e-15 1.808314685964287e-15 -6.394754300895691e-16
+  translation 0.8165756294404828 0.7809188079149753 -0.0006768900000010125
+  rotation 1.0599250128101794e-09 -2.6450103460502273e-10 -1 0.4891080441941295
+  controller "resqbot_ai1"
+}
+ResQBotRover_V2 {
+  hidden position_0_0 2.5712245004513767e-12
+  hidden position_0_1 -2.570789683500314e-12
+  hidden position_0_2 2.5708269147220342e-12
+  hidden position_0_3 -2.5711815889930833e-12
+  hidden linearVelocity_0 2.2961792946938154e-16 -1.0697084174633953e-14 1.1303989751275384e-16
+  hidden angularVelocity_0 -4.463633580535469e-15 4.439124222571233e-16 -5.655993413107884e-12
+  hidden linearVelocity_11 1.4431091898462651e-12 -2.4651189971129833e-13 -4.551110486247555e-16
+  hidden angularVelocity_11 2.6789575836569442e-14 2.5539089206043457e-11 -5.650470979553936e-12
+  hidden linearVelocity_12 -1.442624292380413e-12 -2.4705896333717617e-13 1.0166471509654295e-15
+  hidden angularVelocity_12 3.693075777554958e-14 -2.5534199271998206e-11 -5.650463067534641e-12
+  hidden linearVelocity_13 1.442765733864866e-12 2.4710016344813626e-13 -6.923586633391451e-16
+  hidden angularVelocity_13 -3.5241303737148614e-14 2.5533794524223917e-11 -5.650459234774077e-12
+  hidden linearVelocity_14 -1.4426466069366463e-12 2.472917552564498e-13 9.976720912567825e-16
+  hidden angularVelocity_14 -4.126535028430471e-14 -2.5529390457497785e-11 -5.650463446987378e-12
+  translation -2.0971652057172007e-14 10.829999999999833 -0.0006768900000033856
+  rotation 0.999999999964798 1.2095659419107121e-08 -8.390694563555615e-06 4.524927124834606e-09
+  name "ResQBot_AI(1)"
+  controller "resqbot_ai1"
+}
